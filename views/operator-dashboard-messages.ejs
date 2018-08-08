@@ -17,7 +17,7 @@
       <!--TOOLBOX-->
       <div class="toolbox-container w60 fpv fl iblk bg-clr24">
          <!--Add the toolbox (sidebar)-->
-         <%- include("operator-sidebar") %>
+         <%- include("operator-sidebar", {active : 'messages'}) %>
       </div>
       <!--desktop-->
       <div class="desktop fpv fph-60 iblk pd30 bg-clr27 ys">
@@ -30,7 +30,7 @@
          <section class="h400 fph clr10 mb20">
             <div class="fp ">
                <div class="fpv fph fl bg-clr2 bdr iblk rltv">
-                  <div class="fp" >
+                  <div class="fp">
                      <div class="fp bg-clr2">
                         <table class="fp">
                            <thead class="">
@@ -41,13 +41,15 @@
                                  <th class="pd10 bb2 va-m al">Customer</th>
                                  <th class="bb2 pdr10 va-m">Status</th>
                                  <th class="bb2 pdr10 va-m al">Date</th>
+                                 <th class="bb2 pdr10 va-m al">&nbsp;</th>
                               </tr>
                            </thead>
                            <tbody>
                               <tr class="pd5 h60 bld5 bb">
                                  <td class="ac pd5 va-m">
                                     <div class="hw40 bdr ac oh rltv rc2 m0a">
-                                       <img class="fpv ctr-h" style="max-width: initial" src="css/images/refrigerated-wh.jpg" alt="WH Image"></div>
+                                       <img class="fpv ctr-h" style="max-width: initial" src="css/images/refrigerated-wh.jpg"
+                                            alt="WH Image"></div>
 
                                  </td>
                                  <td class="va-m ac">80</td>
@@ -61,12 +63,22 @@
                                  <td class="va-m pd5">
                                     05-08-2018
                                  </td>
+                                 <td class="ac va-m">
+                                    <!--Accept and decline buttons TODO only show if a booking is pending-->
+                                    <button class="h30 rc15 bg-clr26 clr2 cur-ptr pdlr20 ac rltv" data-tooltip="Accept">
+                                       <i class="fa fa-check"></i>
+                                    </button>
+                                    <button class="h30 rc15 bg-clr9 clr2 cur-ptr pdlr20 ac rltv" data-tooltip="Decline">
+                                       <i class="fa fa-times"></i> <!--We can name this reject TODO ask what team thinks -->
+                                    </button>
+                                 </td>
 
                               </tr>
                               <tr class="pd5 h60 bld5 bb">
                                  <td class="ac pd5 va-m">
                                     <div class="hw40 bdr ac oh rltv rc2 m0a">
-                                       <img class="fpv ctr-h" style="max-width: initial" src="{% static 'frontend/images/fanta.png' %}" alt="WH Image"></div>
+                                       <img class="fpv ctr-h" style="max-width: initial" src="frontend/images/fanta.png"
+                                            alt="WH Image"></div>
                                  </td>
                                  <td class="ac va-m">256</td>
                                  <td class="ac va-m">$ 500</td>
@@ -97,116 +109,116 @@
                      </div>
                   </div>
                </div>
-               </div>
             </div>
-         </section>
       </div>
    </section>
+</div>
+</section>
 
-   <section class="add-wh overlay fxd fp top0 left0 zi50 hidden">
-      <section class="overlay fxd fp op8 bg-clr2 top0 left0 zi50">
-      </section>
-      <section class="overlay fxd fp bg-clr-tr top0 left0 zi52">
-         <button class="close-btn hw40 clr24 abs right10 top10 fts40 lh8 bld2 rc50p pdb10 bg-clr-tr hov-bg-clr-25 bd-clr24 cur-ptr">
-            &times;
-         </button>
+<section class="add-wh overlay fxd fp top0 left0 zi50 hidden">
+   <section class="overlay fxd fp op8 bg-clr2 top0 left0 zi50">
+   </section>
+   <section class="overlay fxd fp bg-clr-tr top0 left0 zi52">
+      <button class="close-btn hw40 clr24 abs right10 top10 fts40 lh8 bld2 rc50p pdb10 bg-clr-tr hov-bg-clr-25 bd-clr24 cur-ptr">
+         &times;
+      </button>
 
-         <div class="add-wh-form ctr-hv w700 ha max-h500 bs-2-3 bg-clr2 zi52 oh bs-1-3 rc4 oh">
-            <div class="fp ys flex-cols-2-1 pdtb30">
-               <div class="ha fph3 br rltv">
-                  <label for="wh-pic">
-                     <div class="hw150 bdr bg-clr28 ctr-hv bdr cur-ptr"></div>
-                  </label>
-                  <input type="file" id="wh-pic" class="hidden">
-               </div>
-               <div class="fpv fph7">
-                  <div class="checkout-form-container">
-                     <form class="pdlr30" method="post" action="/warehouses">
-                        <div class="wh-details-form max-h400 ys mb10">
-                           <!--warehouse name-->
-                           <div class="fields-row mb4p">
-                              <label for="wh-name">Warehouse Name</label>
-                              <input class="h40" type="text" id="wh-name" placeholder="" title="" name="name">
+      <div class="add-wh-form ctr-hv w700 ha max-h500 bs-2-3 bg-clr2 zi52 oh bs-1-3 rc4 oh">
+         <div class="fp ys flex-cols-2-1 pdtb30">
+            <div class="ha fph3 br rltv">
+               <label for="wh-pic">
+                  <div class="hw150 bdr bg-clr28 ctr-hv bdr cur-ptr"></div>
+               </label>
+               <input type="file" id="wh-pic" class="hidden">
+            </div>
+            <div class="fpv fph7">
+               <div class="checkout-form-container">
+                  <form class="pdlr30" method="post" action="/warehouses">
+                     <div class="wh-details-form max-h400 ys mb10">
+                        <!--warehouse name-->
+                        <div class="fields-row mb4p">
+                           <label for="wh-name">Warehouse Name</label>
+                           <input class="h40" type="text" id="wh-name" placeholder="" title="" name="name">
+                        </div>
+                        <!--warehouse type-->
+                        <div class="fields-row mb4p">
+                           <label for="type-of-goods">Type of Goods allowed</label>
+                           <select class="h40" id="type-of-goods" title="" name="">
+                              <option>Select Type of Good</option>
+                              <option>Food and Beverages</option>
+                              <option>Petroleum</option>
+                              <option>Furniture</option>
+                              <option>Electronics</option>
+                              <option>Vehicles</option>
+                           </select>
+                        </div>
+                        <!--space-->
+                        <div class="fields-row mb4p">
+                           <div class="field-wrap">
+                              <label for="total-space">Total Space (sq m)</label>
+                              <input class="h40" type="number" id="total-space" placeholder="" title="" name="area">
                            </div>
-                           <!--warehouse type-->
-                           <div class="fields-row mb4p">
-                              <label for="type-of-goods">Type of Goods allowed</label>
-                              <select class="h40" id="type-of-goods" title="" name="">
-                                 <option>Select Type of Good</option>
-                                 <option>Food and Beverages</option>
-                                 <option>Petroleum</option>
-                                 <option>Furniture</option>
-                                 <option>Electronics</option>
-                                 <option>Vehicles</option>
-                              </select>
+                           <div class="field-wrap">
+                              <label for="free-space">Free Space (sq m)</label>
+                              <input class="h40" type="number" id="free-space" placeholder="" title="" name="empty">
                            </div>
-                           <!--space-->
-                           <div class="fields-row mb4p">
-                              <div class="field-wrap">
-                                 <label for="total-space">Total Space (sq m)</label>
-                                 <input class="h40" type="number" id="total-space" placeholder="" title="" name="area">
-                              </div>
-                              <div class="field-wrap">
-                                 <label for="free-space">Free Space (sq m)</label>
-                                 <input class="h40" type="number" id="free-space" placeholder="" title="" name="empty">
-                              </div>
+                        </div>
+                        <div class="fields-row mb4p">
+                           <div class="field-wrap">
+                              <label for="price">Price /sq m /month ($)</label>
+                              <input class="h40" type="number" id="price" placeholder="" title="" name="price">
                            </div>
-                           <div class="fields-row mb4p">
-                              <div class="field-wrap">
-                                 <label for="price">Price /sq m /month ($)</label>
-                                 <input class="h40" type="number" id="price" placeholder="" title="" name="price">
-                              </div>
-                              <div class="field-wrap">
-                                 <label for="date-available">Location</label>
-                                 <input class="h40" type="text" id="loc" placeholder="Location" title="" name="location">
-                              </div>
+                           <div class="field-wrap">
+                              <label for="date-available">Location</label>
+                              <input class="h40" type="text" id="loc" placeholder="Location" title="" name="location">
                            </div>
+                        </div>
 
-                           <!--detailed description-->
-                           <div class="fields-row">
-                              <label for="description">Description</label>
-                              <textarea class="" id="description" title="" name="">
+                        <!--detailed description-->
+                        <div class="fields-row">
+                           <label for="description">Description</label>
+                           <textarea class="" id="description" title="" name="">
                               </textarea>
-                           </div>
                         </div>
+                     </div>
 
 
-                        <div class="fields-row ac">
-                           <button type="submit" class="next-btn bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb5">Next
-                           </button>
-                        </div>
-                     </form>
+                     <div class="fields-row ac">
+                        <button type="submit" class="next-btn bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb5">Next
+                        </button>
+                     </div>
+                  </form>
+               </div>
+               <div class="confirm-container pd30 hidden">
+                  <div class="mtb30 ac">
+                     <p>Clicking on the button below will confirm and complete payment;</p>
+                     <p class="fts14 ">If you're using mPesa or Debit Card,</p>
+                     <p class="fts14">make sure you have enough funds</p>
                   </div>
-                  <div class="confirm-container pd30 hidden">
-                     <div class="mtb30 ac">
-                        <p>Clicking on the button below will confirm and complete payment;</p>
-                        <p class="fts14 ">If you're using mPesa or Debit Card,</p>
-                        <p class="fts14">make sure you have enough funds</p>
+                  <div class="fields-row ac">
+                     <button class="confirm-btn bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25">Confirm</button>
+                  </div>
+               </div>
+               <!--Progess and success message container-->
+               <div class="success-msg-container pd30 hidden">
+                  <!---->
+                  <!--<p class="ac fts24 h50 mb30">Working on it please wait</p>-->
+                  <div class="fph ac pdtb30"><!--<img src="" alt="">-->
+                     <div class="circle-loader mb30">
+                        <div class="checkmark draw"></div>
                      </div>
                      <div class="fields-row ac">
-                        <button class="confirm-btn bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25">Confirm</button>
+                        <button id="toggle" class="bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25">Dismiss</button>
                      </div>
+                     <!--<p><button id="toggle" type="button" class="btn btn-success">Toggle Completed</button></p>-->
                   </div>
-                  <!--Progess and success message container-->
-                  <div class="success-msg-container pd30 hidden">
-                     <!---->
-                     <!--<p class="ac fts24 h50 mb30">Working on it please wait</p>-->
-                     <div class="fph ac pdtb30"><!--<img src="" alt="">-->
-                        <div class="circle-loader mb30">
-                           <div class="checkmark draw"></div>
-                        </div>
-                        <div class="fields-row ac">
-                           <button id="toggle" class="bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25">Dismiss</button>
-                        </div>
-                        <!--<p><button id="toggle" type="button" class="btn btn-success">Toggle Completed</button></p>-->
-                     </div>
-                  </div>
-                  <!--<div class="failure-msg-container pd30"></div>-->
                </div>
+               <!--<div class="failure-msg-container pd30"></div>-->
             </div>
          </div>
-      </section>
+      </div>
    </section>
+</section>
 </div>
 </body>
 <%- include('core-scripts') %>

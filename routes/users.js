@@ -128,7 +128,40 @@ router.get('/dashboard', function (req, res)
 //Depositor Dashboard
 router.get('/dashboard/messages', function (req, res)
 {
+   if (req.isAuthenticated())
+   {
+      const user = req.user;
+      console.log(user, "req user");
+      Warehouse.find({ operator : user }).then(function (list)
+                                               {
+                                                  res.render('operator-dashboard', { warehouses : list, user : user })
+                                               }).catch(function (err)
+                                                        {
+                                                           res.send("Error");
+                                                           //console.log(err);
+                                                        });
+   }
+   else
+   {
+      //Not authenticated, just login
+      res.render('dashboard', {
+         warehouses : [
+            {
+               name     : "TemaWHQ2",
+               location : "Tema",
+               empty    : 220,
+               area     : 2500,
+               price    : 6,
+            }
+         ],
+         user       : {
+            username  : "Tema warehouse operators",
+            email     : "temahq@email.com",
+            user_type : "Warehose operator"
 
+         }
+      })
+   }
    res.render('operator-dashboard-messages', {user : req.user});
 });
 

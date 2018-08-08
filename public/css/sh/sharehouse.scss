@@ -533,15 +533,31 @@ $check-color: $brand-success;
 .circle-loader
 {
   //margin-bottom: ;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-left-color: $check-color;
-  animation: loader-spin 1.2s infinite linear;
+  background-color: #fff;
+  color: $brand-success ;
+  border: 3px solid $brand-success;
   position: relative;
   display: inline-block;
   vertical-align: top;
   border-radius: 50%;
   width: $loader-size;
   height: $loader-size;
+
+  .amount{
+    font-size: 26px;
+    padding-top: 35px;
+  }
+
+  &.loading{
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-left-color: $check-color;
+    animation: loader-spin 1.2s infinite linear;
+
+    &>{
+
+    }
+  }
 }
 
 .load-complete
@@ -550,6 +566,9 @@ $check-color: $brand-success;
   animation: none;
   border-color: $check-color;
   transition: border 500ms ease-out;
+  .amount{
+    display: none;
+  }
 }
 
 .checkmark
@@ -631,7 +650,7 @@ $check-color: $brand-success;
     font-weight: 600;
     font-size: 16px;
     text-align: center;
-    color:#000531;
+    color: #000531;
     overflow: hidden;
 
     &::before
@@ -639,7 +658,8 @@ $check-color: $brand-success;
       top: 7px;
       left: 7px;
     }
-    &::after{
+    &::after
+    {
       left: 8px;
       top: 8px;
     }
@@ -699,7 +719,8 @@ $check-color: $brand-success;
     {
       & + label
       {
-        &.user{
+        &.user
+        {
           //background-color: #4d506f;
           background-color: #5559b1;
           color: #fff;
