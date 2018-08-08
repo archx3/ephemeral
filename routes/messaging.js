@@ -13,7 +13,7 @@ var _schema = {
   subject: String,
   message: String,
   read: Boolean
-}
+};
 
 var Messages = mongoose.model('messages', new Schema(_schema));
 
@@ -109,7 +109,7 @@ var test_support = {
   send_message,
   retrieve_sentbox,
   retrieve_all_unread
-}
+};
 
 //exports.messagingRouter = router;
 module.exports = router;

@@ -3,28 +3,11 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 
 var Warehouse = mongoose.model('warehouses');
+const Bookings = mongoose.model('bookings');
 
 var router = express.Router();
 
-let Schema = mongoose.Schema;
 
-var _schema = {
-   operator : { type : Schema.Types.ObjectId, ref : 'users' },
-   depositor : { type : Schema.Types.ObjectId, ref : 'users' },
-   warehouse    : { type : Schema.Types.ObjectId, ref : 'warehouses' },
-   bill         : Number,
-   starting     : Date, //move-in date
-   end          : Date,
-   space : Number, //amount of space req'd
-   status : {type : String, enum : ['accepted', 'declined', 'pending']}, //TODO set default to pending
-   autoComputed : Boolean,     //Was the period auto computed, or provided... Just a flexibility feature
-   period       : Number
-};
-var _options = {
-   useNewUrlParser : true
-};
-
-var Bookings = mongoose.model('bookings', new Schema(_schema, _options));
 
 router.get('/', function (req, res, next)
 {
@@ -90,7 +73,7 @@ function post_booking(booking)
 }
 
 //Return a booking, that can be added to the DB
-function compute_bill(warehouse, period)
+function compute_bill(warehouse, period, space)
 {
    //early sanity
    if (!warehouse)
@@ -100,30 +83,21 @@ function compute_bill(warehouse, period)
    }
    //compute the bill required to be paid for period in the warehouse
    period = parseFloat(period);
-   let _autoComputed = false;
    if (Number.isNaN(period))
    {
       period = 1;     //calculate for a period of a month if no period is provided
-      _autoComputed = true;
    }
 
    //Get the ppsqm and compute the bill
-   //FIXME stub to replace the warehouse
-   var price = warehouse.price_per_sqm;
-   let ppsqm = parseFloat(price);
-   if (Number.isNaN(ppsqm))
+   const price = parseFloat(warehouse.price);
+   if (Number.isNaN(price))
    {
       return false;
    }
 
-   let _bill = ppsqm * period; //safely assume the equation won't be a NaN
-   let booking = {
-      bill         : _bill,
-      period       : period,
-      autoComputed : _autoComputed
-   };
 
-   return booking;
+    //safely assume the equation won't be a NaN
+    return price * period * space;
 
 }
 
@@ -133,19 +107,14 @@ A depositor provides the date of start, we use it to match warehouse that are av
 */
 function get_end_period(sp, period)
 {
-   //Get the finishing period offset sp, period in months
    period = period || 1; //defaults to a month
-   let _starting_period = moment(sp);
-   if (!_starting_period.isValid())
+   let _sp = moment(sp);
+   if (!_sp.isValid())
    {
-      //FIXME get better way to convey error
       return false;
    }
-   let months = _starting_period.month();
-   let final = months + period;
-
-   _starting_period.add(final, 'months');
-   return _starting_period;
+    _sp.add(period, 'months');
+   return _sp;
 }
 
 //Get period, of storage
@@ -163,87 +132,60 @@ function get_storage_period(sp, ep)
       return false;
    }
 
-   let period = moment.duration(_ep - _sp).asMonths(); //seconds from epoch
-   return period;
+
+    //seconds from epoch
+    return moment.duration(_ep - _sp).asMonths();
 }
 
-router.post('/:id', function (req, res, next)
+router.post('/:id', function (req, res)
 {
-   var booking = req.body;
-   var id = req.params.id;
-   // var warehouse;
-   var period;
-   var ep;
-   var sp;
+   const space = req.body.space || 20;
+   const period = req.body.period || 1;
+   const sp = req.body.sp || Date.now();
+   const ep = get_end_period(sp, period);
+   const id = req.params.id;
 
-   if (!booking)
-   {
-      console.log("Invalid bill.");
-      res.json({ "status" : "error", "message" : "Invalid bill" });
-   }
-   console.log(booking);
    if (!id)
    {
-      console.log("Invalid warehouse");
-      res.json({ "status" : "error", "message" : "Invalid warehouse" });
-   }
-   console.log(id);
-
-   //warehouse may potentially be undefined... Do other ops in the hope that at completion it will be alright
-   //Booking either specifies an end periof(ep) or a period (period) for time, find out which
-   if ('ep' in booking)
-   {
-      //end period, - Calculate the period itself
-      period = get_storage_period(booking.sp, booking.ep);
-      if (!period)
-      {
-         //could not compute period
-         console.log("Could not compute the period. \n");
-         //res.json({"status":"error", "message":"Could not compute the period."});
-      }
-   }
-   else
-   {
-      //period
-      ep = get_end_period(booking.sp, booking.period);
-      if (!ep)
-      {
-         //could not compute the sp
-         console.log("Could not mercompute the end period");
-         res.json({ "status" : "error", "message" : "Could not compute the end period" });
-      }
+      res.redirect('/users/login');
    }
 
-   period = period || booking.period || 1;
-   var bill = compute_bill(warehouse, period);
-   if (!bill)
-   {
-      //some problem
-      console.log("Problem computing the bill");
-      res.json({ "status" : "error", "message" : "Problem computing the bill" });
-   }
+   Warehouse.findOne({_id: id})
+       .then(function (wh) {
+           //Use it to compose a booking
+           const bill = compute_bill(wh, period, space);
+           if(!bill){
+              //Could'nt calculate bill
+               console.log("Could not compute the bill");
+              res.send("Could not compute the bill");
+           }else{
+              //ensure that space is less than wh.empty
+               if(space > wh.free_space) res.send("Requires more than available");
+              //post a booking?
+               const booking = {
+                  operator: wh.operator,
+                   depositor: req.user,
+                   warehouse: wh,
+                   bill: bill,
+                   starting: sp,
+                   period: period,
+                   ending: ep,
+                   space: space,
+               };
 
-   //Create a posting before posting it
-   bill.starting = booking.sp;
-   bill.ending = ep || booking.ep;
-   Warehouse.findOne({ _id : id })
-            .then(function (_warehouse)
-                  {
-                     bill.warehouse = _warehouse;
-                  })
-            .catch(function (err)
-                   {
-                      console.error("Error booking - Not found: ", err);
-                      res.json({ "status" : "error", "message" : "Warehouse not found" });
-                   });
+               Bookings.create(booking)
+                   .then(function (booking) {
+                      console.log(booking);
+                       res.redirect('/users/dashboard/messages');
+                   }).catch(function (err) {
+                   throw err;
+               })
+           }
 
-   if (!post_booking(bill))
-   {
-      //An error occured
-      console.log("An error occured adding the booking");
-      res.json({ "status" : "error", "message" : "An error occured booking. Please retry" });
-   }
-   res.json(bill);
+       }).catch(function (err) {
+       //handle err
+       throw err;
+   });
 });
 
 module.exports = router;
