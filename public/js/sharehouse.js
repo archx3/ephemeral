@@ -145,7 +145,7 @@
                                         if (globalHost.scrollTop === scrollTo || globalHost.scrollTop <= 0)
                                         {
                                            clearInterval(timer);
-                                           return;
+
                                         }
 
                                      }, duration)

@@ -105,23 +105,7 @@ router.get('/dashboard', function (req, res)
    else
    {
       //Not authenticated, just login
-      res.render('dashboard', {
-         warehouses : [
-            {
-               name     : "TemaWHQ2",
-               location : "Tema",
-               empty    : 220,
-               area     : 2500,
-               price    : 6,
-            }
-         ],
-         user       : {
-            username  : "Tema warehouse operators",
-            email     : "temahq@email.com",
-            user_type : "Warehose operator"
-
-         }
-      })
+      res.redirect(req.baseUrl + '/login')
    }
 });
 
