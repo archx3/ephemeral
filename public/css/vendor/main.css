@@ -1,0 +1,195 @@
+/*
+#0078ff; __blue
+#004089 __deep blue
+#f0f0f0 __light gray -form bg color
+#ccc __form input border gray
+#fff
+*/
+/*.button{
+  width:100px;
+  background:#0078ff;
+  display:block;
+  margin:0 auto;
+  margin-top:1%;
+  padding:10px;
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  cursor:pointer;
+  transition:background .3s;
+  -webkit-transition:background .3s;
+}
+
+.button:hover{
+  background:#2288bb;
+}
+
+*/
+@font-face {
+  font-family: "Segoe UI";
+  src: url("../fonts/SEGOEUI.TTF") format("truetype"); }
+@font-face {
+  font-family: "Sertig";
+  src: url("../fonts/Sertig.otf"); }
+@font-face {
+  font-family: "segoe mdl2 Assets";
+  src: url("../fonts/segmdl2.ttf"); }
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  outline: none;
+  /*-webkit-user-select: none;*/
+  /*transition: all .3s;*/
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+*:focus, *:active, *:hover {
+  outline: none; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  /*background-color: #00fe98;*/
+  background-color: var(--workSpaceBgColor); }
+
+.container {
+  margin: 0 auto;
+  background-color: #fff; }
+  .container.rc {
+    border-radius: 2px; }
+  .container.elevated {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+
+#mainFormContainer {
+  margin-top: 70px;
+  padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 50px;
+  height: auto;
+  position: relative;
+  z-index: 201;
+  overflow: hidden;
+  /*transition: all 3s ease;*/ }
+
+#mainFormContainer h1 {
+  font-size: 14px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #4F586A; }
+
+#logo_div, #activeUserImage {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  background: #fff;
+  border: 1px solid transparent; }
+
+#activeUserImage {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 0;
+  /*border:1px solid #ccc;*/
+  border: 3px solid #d6dbe7;
+  background-color: #fcfcfc;
+  border-radius: 250%; }
+
+#logo_div:hover {
+  border: 1px solid #ccc;
+  background-color: #fcfcfc;
+  border-radius: 2px;
+  /*border-radius:50%;*/ }
+
+#login {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: auto;
+  /*border:1px solid #ccc;*/
+  transition: opacity 1s;
+  -webkit-transition: opacity 1s;
+  text-align: center; }
+
+/*#login h1{
+  background:#0078ff;
+  padding:20px 0;
+  font-size:140%;
+  font-weight:300;
+  text-align:center;
+  color:#fff;
+  cursor: default;
+  display: none;
+}*/
+form {
+  /*background:#f0f0f0;*/ }
+
+#userTypeDiv {
+  width: 100%;
+  height: 30px;
+  background: #fff;
+  background-image: -webkit-linear-gradient(top, #fff, #F1F1F1);
+  background-image: -moz-linear-gradient(top, #fff, #F1F1F1);
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 95%;
+  color: #555;
+  overflow: hidden;
+  padding-top: 1%; }
+
+#userTypeDiv .inputIcon {
+  width: 15px;
+  height: 29px;
+  float: right;
+  background-image: url("images/spinner.png");
+  margin-top: -27px;
+  background-repeat: no-repeat;
+  padding-left: 2px;
+  position: relative; }
+
+#userTypeDiv select {
+  width: 105%;
+  height: 100%;
+  background: #fff;
+  border: none;
+  padding: 1%;
+  font-size: 95%;
+  color: #555; }
+
+/*  for supported browsers
+#userTypeDiv select :nth-child(n + 1){
+  padding:2%;
+}*/
+/* for all browsers*/
+#userTypeDiv select > option {
+  padding: 2%;
+  /*width:calc(100% - 50%)*/ }
+
+input[type="text"], input[type="password"] {
+  /*border-radius: 3px;*/ }
+
+input[readonly] {
+  border: none;
+  font-weight: 500; }
+
+/*region signed in user*/
+/*#undoUserDelete>*
+{
+  pointer-events: none;
+}*/
+/*Large circle*/
+  /*
+  width: 75%;
+height: 75%;
+background-color: #fff;
+border-radius: 50%;
+position: absolute;
+left: 12px;
+top: 12px;
+  */
+/*endregion*/
+
+/*# sourceMappingURL=main.css.map */

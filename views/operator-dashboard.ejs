@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Depositor Dashboard</title>
+   <link rel="stylesheet" href="/css/vendor/main.css">
+   <%- include('core-styles') %>
+
+</head>
+<body class="rltv oh">
+<div class="blk fp global-host ys rltv">
+
+   <!--Add the nav bar-->
+   <%- include('operator-nav') %>
+
+   <section id="workspace" class="container home fph fpv fpv-80 mt80 oh">
+      <!--TOOLBOX-->
+      <div class="toolbox-container w60 fpv fl iblk bg-clr24">
+         <!--Add the toolbox (sidebar)-->
+         <%- include("operator-sidebar") %>
+      </div>
+      <!--desktop-->
+      <div class="desktop fpv fph-60 iblk pd30 bg-clr27 ys">
+         <!--Greeting section-->
+         <section class="h100 fph clr10 mb20 rltv">
+            <p class="fts30 bld5 mb10 rltv wa max-w250">Warehouse Listing
+               <span class="bld6 bg-clr23 clr2 h25 min-w25 rc13 abs top0p-15 right0p-15 fts14 ac pdt5"><%= warehouses.length %></span>
+            </p>
+            <span class="fts18 bld4 mr20">All rentals <i class="fa fa-chevron-down"></i></span>
+            <span class="fts18 bld4">Add Filter Option <i class="fa fa-chevron-down"></i></span>
+            <button class="add-wh-btn cur-ptr min-w100 h40 rc20 bg-clr23 hov-bg-clr24 clr2 abs top20 right0 pdlr20">
+               <i class="fa fa-plus"></i> Add Warehouse
+            </button>
+         </section>
+         <!---->
+         <section class="ha fph clr10 mb20">
+            <section class="">
+               <!--<div class="fp flex-cols-4-1 mb30 jc-sb">-->
+
+               <% if(warehouses){ %>
+               <% /* for(let i = 1; i <= 5; i++){*/ %>
+               <% /*if(i % 5 === 0){*/ %>
+               <div class="fp flex-cols-4-1 mb30">
+                  <% warehouses.forEach(function (warehouse)
+                  { %>
+                  <div class="dsb-wh-card h350 bg-clr2 bs-2-3 mr20 rltv">
+                     <button data-tooltip="Remove" tooltip-pos="left"
+                             class="remove-wh-btn bld7 hw30 rc16 bg-clr23 clr2 abs btm100p-15 left100p-15 pdlr5 ac bdr">&minus;
+                     </button>
+                     <!--name part of card-->
+                     <div class="wh-name h50 pdtb5 pdlr10 bld6 ac">
+                        <p class="fts16"><%= warehouse.name %></p>
+                        <p class="fts12 op6"><i class="fa fa-map-marker"></i> <%= warehouse.location %></p>
+                     </div>
+                     <!--image part of card-->
+                     <div class="wh-img-container bb h200 rltv">
+                        <!--Warehouse Image-->
+                        <div class="fp bt bb ac oh rltv rc2 m0a oh">
+                           <img class="fpv ctr-h max-w-ini" src="/images/refrigerated-wh.jpg" alt="WH Image">
+                        </div>
+                        <!--Visibility button-->
+                        <div class="visibility-btn hw35 rc20 bg-clr23 abs btm10 right10 ac bdr ac" data-tooltip="Make Invisible">
+                           <img src="/images/active.svg" alt="" class="hw30 ctr-hv pe-n">
+                        </div>
+                     </div>
+                     <!--<img class="ctr-hv h290" src="#" alt="" height="140"></div>-->
+                     <div class="wh-detail pdtb10 pdlr10 bld6 ac">
+                        <p class="ft18 oh max-h50 lh15">Clean Cold Room with CCTV camera, as washroom, security post</p>
+                        <p class="fts12 clr23 pdt10"> $ <%= warehouse.price %>.00 /sq m / Month</p>
+                     </div>
+                  </div>
+                  <% }); %>
+               </div>
+               <% /* } */ %>
+               <% /* } */ %>
+               <% } %>
+               <!--</div>-->
+
+            </section>
+         </section>
+      </div>
+   </section>
+
+   <!--Add Warehouse-->
+   <section class="add-wh overlay fxd fp top0 left0 zi50 hidden">
+      <section class="overlay fxd fp op8 bg-clr2 top0 left0 zi50">
+      </section>
+      <section class="overlay fxd fp bg-clr-tr top0 left0 zi52">
+         <button class="close-btn hw40 clr24 abs right10 top10 fts40 lh8 bld2 rc50p pdb10 bg-clr-tr hov-bg-clr-25 bd-clr24 cur-ptr">
+            &times;
+         </button>
+
+         <div class="add-wh-form ctr-hv w700 ha max-h500 bs-2-3 bg-clr2 zi52 oh bs-1-3 rc4 oh">
+            <div class="fp ys flex-cols-2-1 pdtb30">
+               <div class="ha fph3 br rltv">
+                  <label for="wh-pic">
+                     <div class="hw150 bdr bg-clr28 ctr-hv bdr cur-ptr"></div>
+                  </label>
+                  <input type="file" id="wh-pic" class="hidden">
+               </div>
+               <div class="fpv fph7">
+                  <div class="checkout-form-container">
+                     <form class="pdlr30" method="post" action="/warehouses">
+                        <div class="wh-details-form max-h400 ys mb10">
+                           <!--warehouse name-->
+                           <div class="fields-row mb4p">
+                              <label for="wh-name">Warehouse Name</label>
+                              <input class="h40" type="text" id="wh-name" placeholder="" title="" name="name">
+                           </div>
+                           <!--warehouse type-->
+                           <div class="fields-row mb4p">
+                              <label for="type-of-goods">Type of Goods allowed</label>
+                              <select class="h40" id="type-of-goods" title="" name="">
+                                 <option>Select Type of Good</option>
+                                 <option>Food and Beverages</option>
+                                 <option>Petroleum</option>
+                                 <option>Furniture</option>
+                                 <option>Electronics</option>
+                                 <option>Vehicles</option>
+                              </select>
+                           </div>
+                           <!--space-->
+                           <div class="fields-row mb4p">
+                              <div class="field-wrap">
+                                 <label for="total-space">Total Space (sq m)</label>
+                                 <input class="h40" type="number" id="total-space" placeholder="" title="" name="area">
+                              </div>
+                              <div class="field-wrap">
+                                 <label for="free-space">Free Space (sq m)</label>
+                                 <input class="h40" type="number" id="free-space" placeholder="" title="" name="empty">
+                              </div>
+                           </div>
+                           <div class="fields-row mb4p">
+                              <div class="field-wrap">
+                                 <label for="price">Price /sq m /month ($)</label>
+                                 <input class="h40" type="number" id="price" placeholder="" title="" name="price">
+                              </div>
+                              <div class="field-wrap">
+                                 <label for="date-available">Location</label>
+                                 <input class="h40" type="text" id="loc" placeholder="Location" title="" name="location">
+                              </div>
+                           </div>
+
+                           <!--detailed description-->
+                           <div class="fields-row">
+                              <label for="description">Description</label>
+                              <textarea class="" id="description" title="" name="">
+                              </textarea>
+                           </div>
+                        </div>
+
+
+                        <div class="fields-row ac">
+                           <button type="submit" class="next-btn bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb5">Next
+                           </button>
+                        </div>
+                     </form>
+                  </div>
+                  <div class="confirm-container pd30 hidden">
+                     <div class="mtb30 ac">
+                        <p>Clicking on the button below will confirm and complete payment;</p>
+                        <p class="fts14 ">If you're using mPesa or Debit Card,</p>
+                        <p class="fts14">make sure you have enough funds</p>
+                     </div>
+                     <div class="fields-row ac">
+                        <button class="confirm-btn bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25">Confirm</button>
+                     </div>
+                  </div>
+                  <!--Progess and success message container-->
+                  <div class="success-msg-container pd30 hidden">
+                     <!---->
+                     <!--<p class="ac fts24 h50 mb30">Working on it please wait</p>-->
+                     <div class="fph ac pdtb30"><!--<img src="" alt="">-->
+                        <div class="circle-loader mb30">
+                           <div class="checkmark draw"></div>
+                        </div>
+                        <div class="fields-row ac">
+                           <button id="toggle" class="bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25">Dismiss</button>
+                        </div>
+                        <!--<p><button id="toggle" type="button" class="btn btn-success">Toggle Completed</button></p>-->
+                     </div>
+                  </div>
+                  <!--<div class="failure-msg-container pd30"></div>-->
+               </div>
+            </div>
+         </div>
+      </section>
+   </section>
+</div>
+</body>
+<%- include('core-scripts') %>
+<!--<script src="js/highcharts.src.min.js"></script>-->
+
+<!--<script src="js/analytics-charts.js"></script>-->
+<!--<script src="http://sharehouse-rc1.herokuapp.com/js/devless-sdk.js" class="devless-connection"-->
+<!--devless-con-token="9b99b11895722438a725427ef1b57e2b"></script>-->
+<script>
+   (function ()
+   {
+      let Bu = Bee.Utils,
+          Bd = Bee.Dom,
+          Be = new Bee.Event.EventManager(),
+          $  = Bd.getEl;
+      let $add = $(".add-wh");
+
+      Be.bind($(".add-wh-btn"), "click", function (e)
+      {
+         $add.classList.remove("hidden")
+      });
+
+      Be.bindOnAll([$('.overlay>button.close-btn'),], "click", function (e)
+      {
+         Bd.addClass($add, 'hidden');
+      });
+   }());
+
+</script>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Depositor Dashboard</title>
+   <link rel="stylesheet" href="/css/vendor/main.css">
+
+   <%- include('core-styles')%>
+
+</head>
+<body class="rltv oh">
+<div class="blk fp global-host oh rltv bg-clr2">
+   <nav class="menubar abs fph blk">
+      <div class="fp clr24">
+         <!--<div class="fp blk abs nav-bg pdlr5p"></div>-->
+         <div class="fpv fph95 blk pdl40 fl iblk">
+            <div class="fp blk menu-container">
+               <div class="head-logo rltv iblk fpv">
+                  <div>
+                     <a href="/home">
+                        <img src="/images/shpp.jpeg" alt="sharehouse logo" class="">
+                     </a>
+                  </div>
+                  <div></div>
+               </div>
+               <div class="menu h-menu rltv iblk fpv ">
+                  <ul>
+                     <li class="active"><a href="#" class="clr24">Home</a></li>
+                     <li><a href="#" class="clr24">Services</a></li>
+                     <li><a href="#" class="clr24">About</a></li><!-- team info shd be here -->
+                     <li><a href="#" class="clr24">Contact</a></li>
+                     <li>
+
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </nav>
+   <div class="fph5 fpv6 ctr-v left20 zi1">
+      <!--<div class="fp zi3 abs  ar">
+         <h3 class="bld7 fts55 mb20">Sharehouse</h3>
+         <p class="flex-cols-2-2 jc-sa">
+            <span class="">
+               <span class="h20 w15 pd5 pdr2 ac bg-clr24 clr2 mr10"><i class="fa fa-search"></i></span>Find
+            </span>
+            <span class="">
+               <span class="h20 w15 pd5 pdr2 ac bg-clr24 clr2 mr10"><i class="fa fa-eye"></i> </span>Preview
+               </span>
+            <span class="">
+               <span class="h20 w15 pd5 pdr2 ac bg-clr24 clr2 mr10"><i class="fa fa-paypal"></i> </span>Book
+            </span>
+         </p>
+      </div>-->
+      <img src="/images/sh-store-nbg.png" class=" left50 abs zi2" alt="">
+   </div>
+   <!--Login form section-->
+   <div class="ctr-v right100 w400 h500 bdr bg-clr2 pdt0 cr4 zi10">
+      <!--<div class="fph h55 rltv">-->
+         <!--<div class="hw50 ctr-h oh">-->
+            <!--<img src="/images/shpp.jpeg" class="h50 ctr-h" height="" width=""/>-->
+         <!--</div>-->
+      <!--</div>-->
+      <!--<div class="fph h35 rltv mb10">-->
+         <!--<div class="ctr-h bld7 pdt3 pdlr20 h30 rc16 bdr">Sharehouse</div>-->
+      <!--</div>-->
+      <div class="fph ha">
+         <form action="/users/" class="depositor pd20 " method="post">
+            <div class="fph ha pdb mb20 bb">
+               <p>I'm here to:</p>
+               <div class="payt-options mb5p h35 pdt5 flex-cols-2-3 jc-sb">
+                  <div class="fpv hov-bg-clr28 ac oh ml0">
+                     <div class="fp img-radio">
+                        <input type="radio" id="depositor-radio" name="type" value="depositor" checked>
+                        <label for="depositor-radio" class="fp user">Find Space</label>
+                     </div>
+                  </div>
+                  <div class="fpv hov-bg-clr28 ac oh mr0">
+                     <div class="fp img-radio">
+                        <input type="radio" id="operator-radio" name="type" value="operator">
+                        <label for="operator-radio" class="fp user">List Space</label>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="fields-row mb5p">
+               <div class="field-wrap">
+                  <input class="h35" type="text" id="depo-firstname" placeholder="first Name" title="" name="first_name">
+               </div>
+               <div class="field-wrap">
+                  <input class="h35" type="text" id="depo-lastname" placeholder="last Name" title="" name="last_name">
+               </div>
+            </div>
+            <div class="fields-row mb5p">
+               <input class="h35" type="email" id="depo-email" placeholder="Email" title="" name="email">
+            </div>
+            <div class="fields-row mb5p">
+               <div class="field-wrap">
+                  <input class="h35" type="password" id="depo-password" placeholder="Password" title="" name="password">
+               </div>
+               <div class="field-wrap">
+                  <input class="h35" type="password" id="depo-password2" placeholder="Confirm password" title="">
+               </div>
+            </div>
+            <!--<div class="fields-row mb5p">-->
+               <!--<input class="h35 bb0" type="password" id="depo-password" placeholder="Password" title="" name="password">-->
+               <!--<input class="h35" type="password" id="depo-password2" placeholder="Confirm Password" title="">-->
+            <!--</div>-->
+            <div class="fields-row mb4p">
+               <input class="h35" type="tel" id="depo-phone" placeholder="Phone" title="" name="phone">
+            </div>
+            <p class="mtb5 ac"><span class="op6">Already have an account?</span> <a href="/users/login" class="td-i">Sign in</a></p>
+
+            <div class="fields-row rltv ac">
+               <button class="bg-clr23 hov-bg-clr24 clr2 pdlr40 pdtb10 rc20 mtb25">SUBMIT</button>
+            </div>
+            <div class="fields-row rltv fts11">
+            By proceeding, I agree that Sharehouse and/or its representatives may contact me by email, phone, or SMS (including by automatic telephone dialing system) at the email address or number I provide, including for marketing purposes. I have read and understand the relevant <a href="#">Privacy Statement</a>.
+            </div>
+         </form>
+      </div>
+   </div>
+
+   <div class="fph h40 op7 pdlr20p ac abs btm0">
+      <div class="fp pd10 bt">Copyright &copy; 2018</div>
+   </div>
+</div>
+</body>
+<!--<script src="js/base.min.js"></script>-->
+<!---->
+<!--<script src="js/Dom.js"></script>-->
+<!---->
+<!--<script src="js/highcharts.src.min.js"></script>-->
+<!---->
+<!--<script src="js/analytics-charts.js"></script>-->
+<!--<script src="http://sharehouse-rc1.herokuapp.com/js/devless-sdk.js" class="devless-connection"-->
+<!--devless-con-token="9b99b11895722438a725427ef1b57e2b"></script>-->
+</html>

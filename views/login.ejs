@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Depositor Dashboard</title>
+   <link rel="stylesheet" href="/css/vendor/main.css">
+
+   <%- include('core-styles')%>
+
+</head>
+<body class="rltv oh">
+<div class="blk fp global-host oh rltv bg-clr27">
+
+   <!--Login form section-->
+   <div class="ctr-hv w350 h400 bdr bg-clr2 pd20 pdt40 cr4">
+      <!--Logo and name section-->
+      <div class="fph h55 rltv">
+         <div class="hw50 ctr-h oh">
+            <img src="/images/shpp.jpeg" class="h50 ctr-h" height="" width=""/>
+         </div>
+      </div>
+      <div class="fph h35 rltv mb10">
+         <div class="ctr-h bld7 pdt3 pdlr20 h30 rc16 bdr">Sharehouse</div>
+      </div>
+      <div class="fph ha">
+         <form action="/users/login" method="post">
+            <div class="fp ctr-h pdlr30">
+               <div class="fph h40 pd5 mb10">
+                  <input type="email" name="email" id="" class="h35 bdr fp pd10 ac" placeholder="Email">
+               </div>
+               <div class="fph h40 pd5 mb20">
+                  <input title="" type="password" name="password" id="sdsd" class="h35 bdr fp pd10 ac" placeholder="Password ">
+               </div>
+               <p class="mtb5 ac">Don't have an account? <a href="/users/register" class="td-i">Sign up</a></p>
+               <div class="fph h40 pd5 ac">
+                  <button title="" type="submit" name="" id="jbb" class="m0a cur-ptr h40 fp pd10 w120 bg-clr23 hov-bg-clr24 clr2 rc20">
+                     Login
+                  </button>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+
+   <div class="fph h70 op7 pdlr20p ac abs btm0">
+      <div class="fp pd20 bt">Copyright &copy; 2018</div>
+   </div>
+</div>
+</body>
+<!--<script src="js/base.min.js"></script>-->
+<!---->
+<!--<script src="js/Dom.js"></script>-->
+<!---->
+<!--<script src="js/highcharts.src.min.js"></script>-->
+<!---->
+<!--<script src="js/analytics-charts.js"></script>-->
+<!--<script src="http://sharehouse-rc1.herokuapp.com/js/devless-sdk.js" class="devless-connection"-->
+<!--devless-con-token="9b99b11895722438a725427ef1b57e2b"></script>-->
+</html>

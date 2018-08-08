@@ -1,0 +1,94 @@
+<!--suppress HtmlUnknownTarget -->
+<!DOCTYPE html="">
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0"/>
+    <title> Sharehouse: Home</title>
+    <!-- meta tags -->
+
+    <!-- style files -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css">
+    <%- include('styles') %>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+<body id="body">
+<div class="ui container fluid">
+    <div class="ui segment brand">
+        <img class="ui medium image" src="/images/sh_text.png">
+
+    </div>
+
+
+</div>
+
+<div class="ui container inner">
+
+    <div class="ui labeled button" tabindex="0">
+        <div class="ui button add">
+            <i class="plus icon"></i>
+            <a href="/warehouses/add"> List a space </a>
+        </div>
+
+    </div>
+
+    <div class="ui right aligned grid">
+        <div class="left floated left aligned four wide column">
+            <div class="ui card">
+                <div class="content">
+                    <div class="ui list">
+                        <div class="item"><a href="/users/dashboard">My Profile</a></div>
+                        <div class="item"><a class="/warehouse/manage">Manage</a></div>
+                        <div class="item"><a href="/warehouses/store">In Storage</a></div>
+                        <div class="item"><a>Messages</a></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="right floated left aligned eleven wide column">
+            <div class="ui list">
+                <div class="ui item">
+                    <div class="ui grid">
+                        <div class="four wide column">
+                            <div class="ui image">
+                                <img class="ui medium image" src="/images/wh.png" alt="Warehouse">
+                            </div>
+                        </div>
+                        <div class="six wide column">
+                            <%if(warehouse){%>
+                            <div class="ui list">
+                                <div class="item"><strong><% warehouse.name %></strong></div>
+                                <ol>
+                                    <div class="item"><strong>Location: </strong><%= warehouse.location%></div>
+                                    <div class="item"><strong>Area: </strong> <%=warehouse.area %></div>
+                                    <div class="item"><strong>Empty space: </strong> <%= warehouse.empty %></div>
+                                    <div class="item"><strong>Price: </strong> $ <%= warehouse.price %>/sqm/mo</div>
+                                </ol>
+                            </div>
+                            <%}else{%>
+                            <p>No warehouse yet. Click <a href="/warehouses/add"> Add</a> to get started.</p>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+
+
+<!-- scripts -->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
+
+</body>
+</html>
+

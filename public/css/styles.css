@@ -1,0 +1,76 @@
+img.ui.mini.image{
+    display: inline-block;
+}
+
+div.ui.segment.brand{
+    background-color: #000531;
+}
+
+span.brand{
+    color: #ffcf02;
+}
+
+
+
+div.ui.container.inner{
+    position: relative;
+    top: 60px;
+
+}
+
+div.ui.container.inner > div.ui.card.body{
+    float: right;
+}
+
+div.ui.right.aligned.grid{
+    margin-top: 5px;
+}
+
+div.ui.right.aligned.grid.details{
+    margin-top: 60px;
+}
+
+div.ui.segment.wh-details{
+    height: auto;
+}
+
+.profile-pic {
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+}
+
+.file-upload {
+    display: none;
+}
+.circle {
+    border-radius: 1000px !important;
+    overflow: hidden;
+    width: 128px;
+    height: 128px;
+    border: 8px solid rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 72px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.p-image {
+    position: absolute;
+    top: 167px;
+    right: 30px;
+    color: #666666;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.p-image:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.upload-button {
+    font-size: 1.2em;
+}
+
+.upload-button:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    color: #999;
+}

@@ -1,0 +1,57 @@
+.menubar {
+  height: 80px;
+  background-color: transparent;
+  position: fixed;
+  -webkit-transition: height .3s;
+  -moz-transition: height .3s;
+  -ms-transition: height .3s;
+  -o-transition: height .3s;
+  transition: height .3s;
+  z-index: 30;
+  font-family: "open sans", sans-serif;
+  font-weight: 600; }
+  .menubar .menu-container {
+    padding: 15px 20px; }
+  .menubar .nav-bg {
+    opacity: 0; }
+  .menubar.min {
+    height: 50px;
+    background-color: #ffb200; }
+    .menubar.min .menu-container {
+      padding: 5px 20px; }
+    .menubar.min .menu li {
+      line-height: 2.5; }
+      .menubar.min .menu li a {
+        color: #000;
+        padding: 3px 25px;
+        font-weight: 400; }
+      .menubar.min .menu li a:hover {
+        background-color: #fff !important; }
+    .menubar.min .head-logo {
+      width: 150px; }
+      .menubar.min .head-logo img {
+        height: 40px; }
+  .menubar .head-logo {
+    width: 150px; }
+    .menubar .head-logo img {
+      height: 50px;
+      transition: height .2s; }
+  .menubar .menu {
+    float: right; }
+    .menubar .menu li {
+      line-height: 3.2;
+      margin: 0 2px; }
+      .menubar .menu li.active a {
+        background-color: rgba(255, 255, 255, 0.3); }
+      .menubar .menu li a {
+        padding: 8px 25px;
+        -webkit-border-radius: 23px;
+        -moz-border-radius: 23px;
+        border-radius: 23px;
+        transition: background .3s;
+        color: #fff;
+        font-weight: 400; }
+      .menubar .menu li a:hover {
+        background-color: #ffb200 !important; }
+
+/*# sourceMappingURL=nav.css.map */

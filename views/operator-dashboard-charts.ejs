@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Depositor Dashboard</title>
+
+   <link rel="stylesheet" href="css/bumblebee/root.css">
+   <link rel="stylesheet" href="css/bumblebee/main.css">
+
+   <link rel="stylesheet" href="css/bumblebee/menu.css">
+   <!--<link rel="stylesheet" href="css/bumblebee/form.css">-->
+   <!--<link rel="stylesheet" href="css/bumblebee/TabbedViewDockManager.css">-->
+   <link rel="stylesheet" href="css/fonts/font-awesome.css">
+
+   <link rel="stylesheet" href="css/sh/bumble-bee.css">
+   <link rel="stylesheet" href="css/sh/sharehouse.css">
+   <link rel="stylesheet" href="css/sh/flyout-toolbox.css">
+
+   <!--<link rel="stylesheet" href="css/sh/tooltip.css">-->
+
+</head>
+<body class="rltv oh">
+<div class="blk fp global-host ys rltv">
+   <nav class="menubar abs fph blk bg-clr14">
+      <div class="fp bg-clr24 clr24">
+         <!--<div class="fp blk abs nav-bg pdlr5p"></div>-->
+         <div class="fpv fph95 blk pdl5p fl iblk">
+            <div class="fp blk menu-container">
+               <div class="head-logo rltv iblk fpv bg-clr24">
+                  <div>
+                     <a href="index.html">
+                        <img src="css/images/SharehouseLogo.png" alt="sharehouse logo" class="">
+                     </a>
+                  </div>
+                  <div></div>
+               </div>
+               <div class="menu h-menu rltv iblk fpv ">
+                  <ul>
+                     <li class="active"><a href="#">Home</a></li>
+                     <li><a href="#">Services</a></li>
+                     <li><a href="#">About</a></li><!-- team info shd be here -->
+                     <li><a href="#">Contact</a></li>
+                     <li>
+
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+
+         <div class="fpv hw40 iblk pdtb20">
+            <div class="blk hw40 user-img">
+               <img id="" class=" fp rc50p bdr" src="css/images/usravatar.png" alt="Checkkit" height="30">
+               <ul class=" user-menu ha w200 bg-clr2 rc2 bs-3-3 abs right25 top70 tri-t-83p pd5">
+                  <li class="h35 fph bb bg-clr2">
+                     <a class="fp pdlr10 pdt6 cur-ptr hov-bg-clr27 bld5 blk">
+                        <i class="fa fa-user-secret mr5 fts18"></i> Shadrack Miano
+                     </a>
+                  </li>
+                  <li class="h35 fph bb bg-clr2">
+                     <a href="depositor-dashboard.html" class=" fp pdlr10 pdt6 cur-ptr hov-bg-clr27 bld5 blk">
+                        <i class="fa fa-cog mr5 fts18"></i> <span>Settings</span>
+                     </a>
+                  </li>
+                  <li class="h35 fph bg-clr2">
+                     <a class=" fp pdlr10 pdt6 cur-ptr hov-bg-clr27 bld5 blk">
+                        <i class="fa fa-power-off mr5 fts18"></i> Logout
+                     </a>
+                  </li>
+               </ul>
+
+            </div>
+         </div>
+      </div>
+   </nav>
+   <section id="workspace" class="container home fph fpv fpv-80 mt80 oh">
+      <!--desktop-->
+      <div class="desktop fpv fph iblk pd30 bg-clr27 ys">
+         <section class="h400 fph clr10 mb20">
+            <div class="fp ">
+               <div class="fpv fph-420 fl bg-clr2 bdr iblk rltv">
+                  <div class="fp" >
+                     <div class="fp bg-clr2">
+                        <table class="fp">
+                           <thead class="">
+                              <tr class="h40">
+                                 <th class="bb2 va-m">&nbsp;</th>
+                                 <th class="pd10 bb2 va-m">Space</th>
+                                 <th class="pd10 bb2 va-m">Amount</th>
+                                 <th class="pd10 bb2 va-m al">Customer</th>
+                                 <th class="bb2 pdr10 va-m">Status</th>
+                                 <th class="bb2 pdr10 va-m al">Date</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="pd5 h60 bld5 bb">
+                                 <td class="ac pd5 va-m">
+                                    <div class="hw40 bdr ac oh rltv rc2 m0a">
+                                       <img class="fpv ctr-h" style="max-width: initial" src="css/images/refrigerated-wh.jpg" alt="WH Image"></div>
+
+                                 </td>
+                                 <td class="va-m ac">80</td>
+                                 <td class="ac va-m">$ 2400</td>
+                                 <td class="ellipsify va-m  max-w150" title="Medicine ">Shadrack Miano</td>
+                                 <td class="ac va-m">
+                                    <button class="h30 rc15 min-w90 bg-clr15 clr2 cur-ptr pdlr20 ac">
+                                       Pending
+                                    </button>
+                                 </td>
+                                 <td class="va-m pd5">
+                                    05-08-2018
+                                 </td>
+
+                              </tr>
+                              <tr class="pd5 h60 bld5 bb">
+                                 <td class="ac pd5 va-m">
+                                    <div class="hw40 bdr ac oh rltv rc2 m0a">
+                                       <img class="fpv ctr-h" style="max-width: initial" src="{% static 'frontend/images/fanta.png' %}" alt="WH Image"></div>
+                                 </td>
+                                 <td class="ac va-m">256</td>
+                                 <td class="ac va-m">$ 500</td>
+                                 <td class="ellipsify va-m  max-w150" title="Medicine ">Steve Blank</td>
+                                 <td class="ac va-m">
+                                    <button class="h30 rc15 bg-clr22 min-w90 clr2 cur-ptr pdlr20 ac">
+                                       Done
+                                    </button>
+                                 </td>
+                                 <td class="va-m pd5">
+                                    04-06-2018
+                                 </td>
+
+                              </tr>
+                           </tbody>
+                           <tfoot>
+                              <tr>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                              </tr>
+                           </tfoot>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="fpv w400 fr bg-clr2 bdr iblk">
+                  <div class="fp" id="doughnut-chart"></div>
+               </div>
+            </div>
+         </section>
+      </div>
+   </section>
+
+</div>
+</body>
+<script src="js/base.min.js"></script>
+<script src="js/Dom.js"></script>
+<script src="js/highcharts.src.min.js"></script>
+
+<!--<script src="js/analytics-charts.js"></script>-->
+<!--<script src="http://sharehouse-rc1.herokuapp.com/js/devless-sdk.js" class="devless-connection"-->
+<!--devless-con-token="9b99b11895722438a725427ef1b57e2b"></script>-->
+</html>
