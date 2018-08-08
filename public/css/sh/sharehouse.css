@@ -317,24 +317,38 @@ div.warehouse-list div.warehouse {
 .purchase-form {
   transition: all .2s ease-in-out; }
 
+.success-msg-container {
+  top: -50px;
+  z-index: 10; }
+
 .circle-loader {
-  background-color: #fff;
-  color: #001097;
   border: 3px solid #001097;
+  background-color: #fff;
   position: relative;
   display: inline-block;
   vertical-align: top;
   border-radius: 50%;
   width: 7em;
-  height: 7em; }
+  height: 7em;
+  transition: all .2s ease; }
   .circle-loader .amount {
     font-size: 26px;
-    padding-top: 35px; }
+    padding-top: 35px;
+    color: #001097; }
   .circle-loader.loading {
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-left-color: #001097;
     animation: loader-spin 1.2s infinite linear; }
+    .circle-loader.loading .amount {
+      display: none; }
+    .circle-loader.loading.load-complete {
+      -webkit-animation: none;
+      animation: none;
+      border-color: #001097;
+      transition: border 500ms ease-out; }
+      .circle-loader.loading.load-complete .amount {
+        display: none; }
 
 .load-complete {
   -webkit-animation: none;

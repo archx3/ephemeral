@@ -530,22 +530,33 @@ $check-left: ($loader-size/6 + $loader-size/12);
 $check-thickness: 3px;
 $check-color: $brand-success;
 
+.success-msg-container
+{
+  top: -50px;
+  z-index: 10;
+}
+
 .circle-loader
 {
   //margin-bottom: ;
-  background-color: #fff;
-  color: $brand-success ;
+
   border: 3px solid $brand-success;
+  background-color: #fff;
+
   position: relative;
   display: inline-block;
   vertical-align: top;
   border-radius: 50%;
   width: $loader-size;
   height: $loader-size;
+  transition: all .2s ease;
 
   .amount{
     font-size: 26px;
     padding-top: 35px;
+    color: $brand-success ;
+    //right:calc(100% - 85px);
+    //top: 0;
   }
 
   &.loading{
@@ -554,8 +565,19 @@ $check-color: $brand-success;
     border-left-color: $check-color;
     animation: loader-spin 1.2s infinite linear;
 
-    &>{
+    .amount{
+      display: none;
+    }
 
+    &.load-complete
+    {
+      -webkit-animation: none;
+      animation: none;
+      border-color: $check-color;
+      transition: border 500ms ease-out;
+      .amount{
+        display: none;
+      }
     }
   }
 }

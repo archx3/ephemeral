@@ -162,12 +162,12 @@
                         <div class="fields-row mb4p">
                            <div class="field-wrap">
                               <label for="rent-space">Space (sq m) * [Min 20][Max 165]</label>
-                              <input class="h40" value="80" type="number" max="165" min="20" id="rent-space" placeholder="" title=""
+                              <input class="h40 rent-space" value="20" type="number" max="165" min="20" id="rent-space" placeholder="" title=""
                                      name="space">
                            </div>
                            <div class="field-wrap">
                               <label for="months">Number of Months * [Min 1]</label>
-                              <input class="h40" value="3" type="number" min="1" id="months" placeholder="" title="" name="period">
+                              <input class="h40" value="1" type="number" min="1" id="months" placeholder="" title="" name="period">
                            </div>
                         </div>
                         <div class="fields-row mb4p">
@@ -245,13 +245,13 @@
                   </div>
                </div>
                <!--Progess and success message container-->
-               <div class="success-msg-container pd30 abs right100p-85 btm100p">
+               <div class="success-msg-container pd30 abs right100p-85">
                   <!---->
                   <!--<p class="ac fts24 h50 mb30">Working on it please wait</p>-->
                   <div class="fph ac pdtb30 oh"><!--<img src="" alt="">-->
                      <div class="circle-loader mb30">
                         <div class="fp amount">
-                           $ 0.00
+                           <span class="currency">$</span> <span class="bill"><%= warehouse.price * 20 %></span>
                         </div>
                         <div class="checkmark draw"></div>
                      </div>
@@ -347,6 +347,7 @@
 <script>
    (function () //don't pollute the global scope
    {
+
       let Bu               = Bee.Utils,
           Bd               = Bee.Dom,
           Be               = new Bee.Event.EventManager(),
@@ -354,6 +355,28 @@
           payt             = $(".payment-conf"),
           confirmContainer = $('.confirm-container');
       let step = 1;
+
+      /**
+       *
+       * @param price {Number} price per square metre per month
+       * @param space {Number} Amount of space required (square metres)
+       * @param duration {Number} Number of months required
+       */
+      let calculateBill = function(price, space, duration){
+         return price * space * duration
+      };
+
+
+      let price = <%= warehouse.price %>;
+      let rentSpace = $('#rent-space'), months = $('#months');
+      Be.bindOnAll([rentSpace, months], 'change', function (e)
+      {
+         let target = e.target, val = target.value;
+         if(!Bee.String.isEmpty(rentSpace.value) && !Bee.String.isEmpty(months.value))
+         {
+            $('.amount .bill').innerText = calculateBill(price, rentSpace.value, months.value);
+         }
+      });
 
       Be.bind($("button.rent"), "click", function (e)
       {
@@ -396,17 +419,28 @@
 
       Be.bind($('.confirm-btn'), 'click', function (e)
       {
+
          Bd.addClass($(".form-head"), 'hidden');
          Bd.addClass(confirmContainer, 'hidden');
-         Bd.removeClass($('.success-msg-container'), 'hidden');
+
+         let $success = $('.success-msg-container');
+         Bd.removeClass($success, 'hidden');
+         Bd.removeClass($success, 'abs');
+         Bd.addClass($success.querySelector('.circle-loader'), 'loading');
+
+
          let purchase = $('.purchase-form');
          Bd.removeClass(purchase, 'w650');
          Bd.addClass(purchase, 'w400');
+         Bd.addClass(purchase, 'h350');
 
+         //TODO send ajax request here to submit the data
          let timer = setTimeout(function ()
                                 {
+                                   //TODO do the following when the request is successful
                                    Bd.addClass($('.circle-loader'), 'load-complete');
                                    Bd.toggleDisplay($('.checkmark'));
+                                   Bd.removeClass($('#toggle').parentElement, 'hidden');
                                    clearTimeout(timer);
                                 }, 3000)
       });
