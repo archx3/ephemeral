@@ -209,7 +209,7 @@ router.post('/:id', function (req, res, next)
       if (!ep)
       {
          //could not compute the sp
-         console.log("Could not compute the end period");
+         console.log("Could not mercompute the end period");
          res.json({ "status" : "error", "message" : "Could not compute the end period" });
       }
    }
