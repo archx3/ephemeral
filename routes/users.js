@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 
 var Warehouse = mongoose.model('warehouses');
 var Users = mongoose.model('users');
+const Bookings = mongoose.model('bookings');
 
 const router = express.Router();
 
@@ -112,8 +113,18 @@ router.get('/dashboard', function (req, res)
 //Depositor Dashboard
 router.get('/dashboard/messages', function (req, res)
 {
+    //Get all bookings belonging to this guy
+    Bookings.find({operator: req.user})
+        .populate('depositor')
+        .populate('warehouse')
+        .then(function (bookings) {
+            //render them
+            res.render('operator-dashboard-messages', {user : req.user, bookings: bookings});
+        }).catch(function (err) {
+        throw err;
+    })
 
-   res.render('operator-dashboard-messages', {user : req.user});
+
 });
 
 //Depositor Dashboard
