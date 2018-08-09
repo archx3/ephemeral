@@ -62,8 +62,6 @@ passport.deserializeUser(function (id, cb) {
     });
 });
 
-app.use(flash());
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/warehouses', warehouseRouter);
