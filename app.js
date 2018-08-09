@@ -4,7 +4,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 let logger = require('morgan');
 const passport = require('passport');
-const flash = require('connect-flash');
 const session = require('express-session');
 let mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
@@ -62,8 +61,6 @@ passport.deserializeUser(function (id, cb) {
         return callback(err);
     });
 });
-
-app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

@@ -190,4 +190,58 @@ router.post('/:id', function (req, res)
    });
 });
 
+router.get('/accept/:id', function (req, res) {
+    //set status to accept
+    //reduce the storage space
+    //notify
+    const id = req.params.id;
+    Bookings.findOne({_id: id})
+        .then(function (booking) {
+            //check the space requirement in booking
+            Warehouse.findOne({_id: booking.warehouse})
+                .then(function (wh) {
+                    wh.free_space -= booking.space;
+                    booking.status = "accepted";
+                    booking.save();
+                    wh.save();
+                    res.redirect('/users/dashboard/messages');
+                }).catch(function (err) {
+                throw err;
+            })
+
+
+        }).catch(function (err) {
+        throw err;
+    })
+});
+
+router.get('/reject/:id', function (req, res) {
+    const id = req.params.id;
+    Bookings.findOne({_id: id})
+        .then(function (booking) {
+            booking.status = "declined";
+            booking.save();
+            res.redirect('/users/dashboard/messages');
+        }).catch(function (err) {
+        throw err;
+    })
+});
+
+
+router.get('/delete/:id', function (req, res) {
+    const id = req.params.id;
+    Bookings.findOne({_id: id})
+        .then(function(booking){
+            Warehouse.findOne({_id: booking.warehouse}).then(function (wh) {
+                wh.free_space += booking.space;
+                wh.save();
+            });
+            Bookings.remove(booking).then(function (booking) {
+                res.redirect("/users/dashboard/messages");
+            });
+        }).catch(err => {throw err});
+
+});
+
+
 module.exports = router;

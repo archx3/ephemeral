@@ -161,8 +161,8 @@
                      <div class="rent-details-form">
                         <div class="fields-row mb4p">
                            <div class="field-wrap">
-                              <label for="rent-space">Space (sq m) * [Min 20][Max 165]</label>
-                              <input class="h40 rent-space" value="20" type="number" max="165" min="20" id="rent-space" placeholder="" title=""
+                              <label for="rent-space">Space (sq m) * [Min 20][Max <%=warehouse.free_space%>]</label>
+                              <input class="h40 rent-space" type="number" max="<%=warehouse.free_space%>]" min="20" id="rent-space" placeholder="" title=""
                                      name="space">
                            </div>
                            <div class="field-wrap">
@@ -278,7 +278,7 @@
                   <div class="footer-col col-3">
                      <span class="ti-location-pin blk icon-large tz-icon-color mb10"></span>
                      <h3 class=""> Location</h3>
-                     <p>25 Aluguntugun
+                     <p>25 Aluguntugui
                         <br>East Legon, GH</p>
                   </div>
                   <div class="footer-col col-3">
