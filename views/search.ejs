@@ -5,7 +5,7 @@
    <title>Search</title>
 
    <link rel="stylesheet" href="/css/vendor/main.css">
-   <%- include('core-styles');%>
+   <%- include('core-styles'); %>
 </head>
 <body class="">
 <div class="blk fp global-host ys rltv">
@@ -31,11 +31,11 @@
             <!--</div>-->
             <div class="fpv hw40 iblk pdtb20 fr">
                <div class="blk hw40 user-img">
-                  <img class=" fp rc50p bdr" src="/images/usravatar.png"  height="30">
+                  <img class=" fp rc50p bdr" src="/images/usravatar.png" height="30">
                   <ul class="zi30 user-menu ha w200 bg-clr2 rc2 bs-3-3 abs right85 top80 tri-t-83p pd5">
                      <li class="h35 fph bb bg-clr2">
                         <a class="fp pdlr10 pdt6 cur-ptr hov-bg-clr27 bld5 blk">
-                           <i class="fa fa-user-secret mr5 fts18"></i> <%= %>Shadrack Miano>
+                           <i class="fa fa-user-secret mr5 fts18"></i> <%=         %>Shadrack Miano>
                         </a>
                      </li>
                      <li class="h35 fph bb bg-clr2">
@@ -61,18 +61,18 @@
             <form action="/search" method="GET" class="list-search-form pdr10 pdtb20">
                <div class="fields-row w96p flex-cols-3-1 fl">
                   <div class="fpv">
-                     <input class="inp fph pdtb10 bd-clr-tr" type="number"  name="size" id="usrb"
+                     <input class="inp fph pdtb10 bd-clr-tr" type="number" name="size" id="usrb"
                             value="<%= size %>" placeholder="Size">
                   </div>
                   <div class="fpv">
                      <select id="" title="" class=" bd-clr-tr pdtb7">
 
-                        <option >Select Type of Good</option>
+                        <option>Select Type of Good</option>
                         <!--<option selected="selected">General</option>-->
 
                         <% togs.forEach(function(val) { %>
-                           <option selected="<%= val === typeOfGoods ? 'selected' : '' %>" value="<%= val %>"> <%= val %></option>
-                        <%})%>
+                        <option selected="<%= val === typeOfGoods ? 'selected' : '' %>" value="<%= val %>"> <%= val %></option>
+                        <% }) %>
                         <!--<option>Food and Beverages</option>-->
                         <!--<option>Petroleum</option>-->
                         <!--<option>Furniture</option>-->
@@ -95,14 +95,13 @@
          </div>
       </div>
    </nav>
-   <section id="home" class="container home fph bg-clr2" style="margin-top: 160px;" >
+   <section id="home" class="container home fph bg-clr2" style="margin-top: 160px;">
       <div class="fph9 fpv ctr-h rc4 flex-cols-2-1 blk">
          <div class="fp warehouse-list">
             <!--<div class="fph ha">-->
 
-
             <% warehouses.forEach(function (warehouse)
-                                  { %>
+            { %>
             <div class="warehouse h350 fph25 bg-clr2 fl bdr">
                <a href="/preview/<%= warehouse._id %>" class="fp">
                   <div class="fph fpv7">
@@ -130,346 +129,12 @@
                   </div>
                </a>
             </div>
-                                  <%})%>
-            <!--<div class="warehouse h350 fph25 bg-clr2 fl bdr">
-               <a href="preview.html" class="fp">
-                  <div class="fph fpv7">
-                     <div class="fp bgs-cov bg-nr cur-ptr bgp-ctr" style="background-image:url('/images/warehouse-Forklift.jpg');"></div>
-                  </div>
-                  <div class="fph fpv2 bt cur-ptr rltv pdtb10">
-                     <div class="hw40 pd5 abs right20 bg-clr2 rc50p btm100p-20 bdr ac oh">
-                        <img src="/images/mankoadze.png" alt="" class="h40 ctr-hv">
-                     </div>
-                     <div class="fpv5 fph pdlr10">
-                        Customs Bonded Warehouse
-                     </div>
-                     <table class="fph fpv5 clr2 pdlr10">
-                        <tr class="">
-                           <td class="bld7 w65p">
-                              <i class="fa fa-pie-chart clr14"></i> 165 / 2000 sq.m
-                           </td>
-                           <td class="ac br bld7 ">
-                              <i class="fa fa-map-marker clr14"></i> Oyibi
-                           </td>
-                           <td class="bld7 w9p ac"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                     <div class="h25 wa iblk rc13 pdlr10 pdt3 bg-clr23 mt10 clr2 bld6 fts12 ml10">More from Operator</div>
-                  </div>
-               </a>
-            </div>
-            <div class="warehouse h350 fph25 bg-clr2 fl bdr">
-               <a href="preview.html" class="fp">
-                  <div class="fph fpv7">
-                     <div class="fp bgs-cov bg-nr cur-ptr bgp-ctr" style="background-image:url('/images/Supply-Chain-Benchmarking.png');"></div>
-                  </div>
-                  <div class="fph fpv2 bt cur-ptr rltv pdtb10">
-                     <div class="hw40 pd5 abs right20 bg-clr2 rc50p btm100p-20 bdr ac oh">
-                        <img src="/images/damco-logo.jpeg" alt="" class="h40 ctr-hv">
-                     </div>
-                     <div class="fpv5 fph pdlr10">
-                        Customs Bonded Warehouse
-                     </div>
-                     <table class="fph fpv5 clr2 pdlr10">
-                        <tr class="">
-                           <td class="bld7 w65p">
-                              <i class="fa fa-pie-chart clr14"></i> 165 / 2000 sq.m
-                           </td>
-                           <td class="ac br bld7 ">
-                              <i class="fa fa-map-marker clr14"></i> Oyibi
-                           </td>
-                           <td class="bld7 w9p ac"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                     <div class="h25 wa iblk rc13 pdlr10 pdt3 bg-clr23 mt10 clr2 bld6 fts12 ml10">More from Operator</div>
-                  </div>
-               </a>
-            </div>
-            <div class="warehouse h350 fph25 bg-clr2 fl bdr">
-               <a href="preview.html" class="fp">
-                  <div class="fph fpv7">
-                     <div class="fp bgs-cov bg-nr cur-ptr bgp-ctr" style="background-image:url('/images/lindsay.jpeg');"></div>
-                  </div>
-                  <div class="fph fpv2 bt cur-ptr rltv pdtb10">
-                     <div class="hw40 pd5 abs right20 bg-clr2 rc50p btm100p-20 bdr ac oh">
-                        <img src="/images/bollore.png" alt="" class="w40 ctr-hv">
-                     </div>
-                     <div class="fpv5 fph pdlr10">
-                        Customs Bonded Warehouse
-                     </div>
-                     <table class="fph fpv5 clr2 pdlr10">
-                        <tr class="">
-                           <td class="bld7 w65p">
-                              <i class="fa fa-pie-chart clr14"></i> 165 / 2000 sq.m
-                           </td>
-                           <td class="ac br bld7 ">
-                              <i class="fa fa-map-marker clr14"></i> Oyibi
-                           </td>
-                           <td class="bld7 w9p ac"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                     <div class="h25 wa iblk rc13 pdlr10 pdt3 bg-clr23 mt10 clr2 bld6 fts12 ml10">More from Operator</div>
-                  </div>
-               </a>
-            </div>
-            <div class="warehouse h350 fph25 bg-clr2 fl bdr">
-               <a href="preview.html" class="fp">
-                  <div class="fph fpv7">
-                     <div class="fp bgs-cov bg-nr cur-ptr bgp-ctr" style="background-image:url('/images/New-Logistics-Park-in-Ghana.jpg');"></div>
-                  </div>
-                  <div class="fph fpv2 bt cur-ptr rltv pdtb10">
-                     <div class="hw40 pd5 abs right20 bg-clr2 rc50p btm100p-20 bdr ac oh">
-                        <img src="/images/damco-logo.jpeg" alt="" class="h40 ctr-hv">
-                     </div>
-                     <div class="fpv5 fph pdlr10">
-                        Customs Bonded Warehouse
-                     </div>
-                     <table class="fph fpv5 clr2 pdlr10">
-                        <tr class="">
-                           <td class="bld7 w65p">
-                              <i class="fa fa-pie-chart clr14"></i> 165 / 2000 sq.m
-                           </td>
-                           <td class="ac br bld7 ">
-                              <i class="fa fa-map-marker clr14"></i> Oyibi
-                           </td>
-                           <td class="bld7 w9p ac"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                     <div class="h25 wa iblk rc13 pdlr10 pdt3 bg-clr23 mt10 clr2 bld6 fts12 ml10">More from Operator</div>
-                  </div>
-               </a>
-            </div>
-
-            <div class="warehouse h350 fph25 bg-clr2 fl bdr">
-               <a href="preview.html" class="fp">
-                  <div class="fph fpv7">
-                     <div class="fp bgs-cov bg-nr cur-ptr bgp-ctr" style="background-image:url('/images/od-whe.jpeg');"></div>
-                  </div>
-                  <div class="fph fpv2 bt cur-ptr rltv pdtb10">
-                     <div class="hw40 pd5 abs right20 bg-clr2 rc50p btm100p-20 bdr ac oh">
-                        <img src="/images/mcdan.png" alt="" class="w40 ctr-hv">
-                     </div>
-                     <div class="fpv5 fph pdlr10">
-                        Customs Bonded Warehouse
-                     </div>
-                     <table class="fph fpv5 clr2 pdlr10">
-                        <tr class="">
-                           <td class="bld7 w65p">
-                              <i class="fa fa-pie-chart clr14"></i> 165 / 2000 sq.m
-                           </td>
-                           <td class="ac br bld7 ">
-                              <i class="fa fa-map-marker clr14"></i> Oyibi
-                           </td>
-                           <td class="bld7 w9p ac"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                     <div class="h25 wa iblk rc13 pdlr10 pdt3 bg-clr23 mt10 clr2 bld6 fts12 ml10">More from Operator</div>
-                  </div>
-               </a>
-            </div>-->
-
-
-            <!--empty-->
-            <!--<div class="warehouse h350 fph25 bg-clr2 fl bdr">
-               <a href="preview.html" class="fp">
-                  <div class="fph fpv7">
-                     <div class="fp bgs-cov bg-nr cur-ptr bgp-ctr" style="background-image:url('/images/cleanWH.jpg');"></div>
-                  </div>
-                  <div class="fph fpv2 bt cur-ptr rltv pdtb10">
-                     <div class="hw40 pd5 abs right20 bg-clr2 rc50p btm100p-20 bdr ac">
-                        <i class="fa fa-twitter abs ctr-hv"></i>
-                     </div>
-                     <div class="fpv5 fph pdlr10">
-                        Customs Bonded Warehouse
-                     </div>
-                     <table class="fph fpv5 clr2 pdlr10">
-                        <tr class="">
-                           <td class="bld7 w65p">
-                              <i class="fa fa-pie-chart clr14"></i> 165 / 2000 sq.m
-                           </td>
-                           <td class="ac br bld7 ">
-                              <i class="fa fa-map-marker clr14"></i> Oyibi
-                           </td>
-                           <td class="bld7 w9p ac"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                     <div class="h25 wa iblk rc13 pdlr10 pdt3 bg-clr23 mt10 clr2 bld6 fts12 ml10">More from Operator</div>
-                  </div>
-               </a>
-            </div>
-            <div class="warehouse h350 fph25 bg-clr2 fl bdr"></div>
-            <div class="warehouse h350 fph25 bg-clr2 fl bdr"></div>
-            <div class="warehouse h350 fph25 bg-clr2 fl bdr"></div>-->
-
-
-            <!--</div>-->
-            <!--<div class="fph ha">-->
-            <!--</div>-->
-            <!--<div class="fph ha">
-               <div class="warehouse h300 fph25 bg-clr2 fl bdr">
-                  <div class="fph fpv9"></div>
-                  <div class="fph fpv1 bt pdlr10">
-                     <table class="fph clr2">
-                        <tr class="">
-                           <td>Size</td>
-                           <td class="bld7">165 / 2000 sq.m</td>
-                           <td class="ac">Oyibi</td>
-                           <td class="bld7"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                  </div>
-               </div>
-               <div class="warehouse h300 fph25 bg-clr2 fl bdr">
-                  <div class="fph fpv9"></div>
-                  <div class="fph fpv1 bt pdlr10">
-                     <table class="fph clr2">
-                        <tr class="">
-                           <td>Size</td>
-                           <td class="bld7">165 / 2000 sq.m</td>
-                           <td class="ac">Oyibi</td>
-                           <td class="bld7"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                  </div>
-               </div>
-               <div class="warehouse h300 fph25 bg-clr2 fl bdr">
-                  <div class="fph fpv9"></div>
-                  <div class="fph fpv1 bt pdlr10">
-                     <table class="fph clr2">
-                        <tr class="">
-                           <td>Size</td>
-                           <td class="bld7">165 / 2000 sq.m</td>
-                           <td class="ac">Oyibi</td>
-                           <td class="bld7"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                  </div>
-               </div>
-               <div class="warehouse h300 fph25 bg-clr2 fl bdr">
-                  <div class="fph fpv9"></div>
-                  <div class="fph fpv1 bt pdlr10">
-                     <table class="fph clr2">
-                        <tr class="">
-                           <td>Size</td>
-                           <td class="bld7">165 / 2000 sq.m</td>
-                           <td class="ac">Oyibi</td>
-                           <td class="bld7"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                  </div>
-               </div>
-            </div>
-            <div class="fph ha">
-               <div class="warehouse h300 fph25 bg-clr2 fl bdr">
-                  <div class="fph fpv9"></div>
-                  <div class="fph fpv1 bt pdlr10">
-                     <table class="fph clr2">
-                        <tr class="">
-                           <td>Size</td>
-                           <td class="bld7">165 / 2000 sq.m</td>
-                           <td class="ac">Oyibi</td>
-                           <td class="bld7"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                  </div>
-               </div>
-               <div class="warehouse h300 fph25 bg-clr2 fl bdr">
-                  <div class="fph fpv9"></div>
-                  <div class="fph fpv1 bt pdlr10">
-                     <table class="fph clr2">
-                        <tr class="">
-                           <td>Size</td>
-                           <td class="bld7">165 / 2000 sq.m</td>
-                           <td class="ac">Oyibi</td>
-                           <td class="bld7"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                  </div>
-               </div>
-               <div class="warehouse h300 fph25 bg-clr2 fl bdr">
-                  <div class="fph fpv9"></div>
-                  <div class="fph fpv1 bt pdlr10">
-                     <table class="fph clr2">
-                        <tr class="">
-                           <td>Size</td>
-                           <td class="bld7">165 / 2000 sq.m</td>
-                           <td class="ac">Oyibi</td>
-                           <td class="bld7"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                  </div>
-               </div>
-               <div class="warehouse h300 fph25 bg-clr2 fl bdr">
-                  <div class="fph fpv9"></div>
-                  <div class="fph fpv1 bt pdlr10">
-                     <table class="fph clr2">
-                        <tr class="">
-                           <td>Size</td>
-                           <td class="bld7">165 / 2000 sq.m</td>
-                           <td class="ac">Oyibi</td>
-                           <td class="bld7"><i class="fa fa-shield clr22"></i></td>
-                        </tr>
-                     </table>
-                  </div>
-               </div>
-            </div>-->
+            <% }) %>
          </div>
       </div>
 
 
    </section>
-   <!--<footer class="ctr blk fdg-h pdlr50 pdtb20">
-      <div class="footer-above">
-         <div class="container m0a">
-            <div class="row fp ctr">
-               <div class="footer-col col-3">
-                  <h3>Location</h3>
-                  <p>25 Aluguntugun
-                     <br>East Legon, GH</p>
-               </div>
-               <div class="footer-col col-3">
-                  <h3>Around the Web</h3>
-                  <div class="menu h-menu m0a ctr atw blk">
-                     <ul class="list-inline fp">
-                        <li class="list-inline-item">
-                           <a class="btn-social btn-outline" href="#">
-                              <i class="fa fa-fw fa-facebook"></i>
-                           </a>
-                        </li>
-                        <li class="list-inline-item">
-                           <a class="btn-social btn-outline" href="#">
-                              <i class="fa fa-fw fa-google-plus"></i>
-                           </a>
-                        </li>
-                        <li class="list-inline-item">
-                           <a class="btn-social btn-outline" href="#">
-                              <i class="fa fa-fw fa-twitter"></i>
-                           </a>
-                        </li>
-                        <li class="list-inline-item">
-                           <a class="btn-social btn-outline" href="#">
-                              <i class="fa fa-fw fa-linkedin"></i>
-                           </a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="footer-col col-3">
-                  <h3>About Sharehouse, Inc</h3>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="footer-below clearfix">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12">
-                  Copyright © Sharehouse, Inc. 2017
-               </div>
-            </div>
-         </div>
-      </div>
-   </footer>-->
 
 </div>
 </body>
