@@ -178,7 +178,7 @@ router.post('/:id', function (req, res)
                Bookings.create(booking)
                    .then(function (booking) {
                         //
-                       res.redirect('/users/home'); //changedhere
+                       res.render('depositor-dashboard-messages', {booking: booking, user: req.user}); //changedhere
                    }).catch(function (err) {
                    throw err;
                })
