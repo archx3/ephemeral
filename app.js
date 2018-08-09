@@ -30,7 +30,8 @@ const db = mongoose.connection;
 require('./models');
 require('./authentication').init(app);
 
-
+//source of static files
+//change to /static in the future
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({

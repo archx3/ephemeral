@@ -30,7 +30,7 @@ function retrieve_inbox(user){
       return records;
     }).catch(function(err){throw err;});
 
-  }else if(typeof user == 'string'){
+  }else if(typeof user === 'string'){
     //fetch from db
     var _query = Users.findOne({_id: user});
     _query.then(function(_user){
@@ -79,14 +79,14 @@ function send_message(to, from, subject, message){
     })
   }
 
-  var message = new Messages({
+  var msg = Messages({
     to: to,
     from: from,
     subject: subject,
     message: message,
     read: false
   });
-  message.save().then(function(succ){return true;}).catch(function(err){throw err;});
+  msg.save().then(function(succ){return true;}).catch(function(err){throw err;});
 }
 
 function retrieve_all_unread(user){

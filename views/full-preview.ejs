@@ -4,11 +4,11 @@
    <meta charset="UTF-8">
    <title>Preview</title>
 
-   <%- include('core-styles')%>
+   <%- include('core-styles') %>
 </head>
 <body class="fp">
 <div class="blk fp global-host ys">
-   <%- include('depositor-nav', {user : user})%>
+   <%- include('depositor-nav', {user : user}) %>
    <section id="home" class="container home fph fpv9 bg-clr27 mt80 bt0">
       <!--<div class="fp blk abs bg-img"></div>-->
       <!--<div class="fp blk abs sh-bg bgs-cov bg-nr">
@@ -23,10 +23,10 @@
             <div class="fph fpv55 clr24 bb rltv">
                <div class="ctr-hv fph8">
                   <h1 class=" mtb20 type bld8 fts36">
-                     <%= warehouse.name%>
+                     <%= warehouse.name %>
                   </h1>
                   <h3 class="mtb20 type al">
-                     <span><i class="fa fa-map-marker"></i></span> <%= warehouse.location%>
+                     <span><i class="fa fa-map-marker"></i></span> <%= warehouse.location %>
                      <span class="ml15"><i class="fa fa-building"></i></span>Agrona Company Ltd
                   </h3>
                </div>
@@ -35,13 +35,13 @@
                <table class="fph clr24">
                   <tr class="h40">
                      <td>Size</td>
-                     <td class="bld7"><%= warehouse.area%> sq.m</td>
+                     <td class="bld7"><%= warehouse.area %> sq.m</td>
                      <td>Available</td>
-                     <td class="bld7"><%= warehouse.free_space%> sq.m</td>
+                     <td class="bld7"><%= warehouse.free_space %> sq.m</td>
                   </tr>
                   <tr class="h40">
                      <td>Type of Goods Allowed</td>
-                     <td class="bld7"><%= warehouse.typeOfGoods%></td>
+                     <td class="bld7"><%= warehouse.typeOfGoods %></td>
                   </tr>
                   <tr class="h40">
                      <td>CCTV</td>
@@ -83,7 +83,7 @@
             <!--image overlay card-->
             <div class="fph6 rc4 h60 bg-clr2 abs top100p-80 ctr-h flex-cols-2-1 bs-2-3">
                <div class="fpv fph6 pd10">
-                  <h3 class="bld ac op6 fts16"><span class="price fts24">$ <%= warehouse.price%></span> /sq m /Month</h3>
+                  <h3 class="bld ac op6 fts16"><span class="price fts24">$ <%= warehouse.price %></span> /sq m /Month</h3>
                </div>
                <div class="fpv fph4 ar rltv pd10 pdt12">
                   <button class="rent pdlr40 pdtb10 rc20 h37 min-w37 bg-clr14 cur-ptr">RENT</button>
@@ -102,14 +102,15 @@
       </div>
    </section>-->
    <!--Pyay't form container-->
-   <section class="payment-conf overlay fxd fp top0 left0 zi50 hidden">
-      <section class="overlay fxd fp op8 bg-clr2 top0 left0 zi50">
-      </section>
-      <section class="overlay fxd fp bg-clr-tr top0 left0 zi52">
-         <button class="close-btn hw40 clr24 abs right10 top10 fts40 lh8 bld2 rc50p pdb10 bg-clr-tr hov-bg-clr-25 bd-clr24 cur-ptr">
-            &times;
-         </button>
-         <div class="purchase-form ctr-hv w650 ha bs-2-3 bg-clr2 zi52 oh bs-1-3 rc4 oh">
+   <section class="payment-conf overlay fxd fp top0 left0 zi50">
+<!--Overlay to make form modal-->
+      <section class="overlay fxd fp op8 bg-clr2 top0 left0 zi50"></section>
+      <!--Section with form-->
+      <section class=" fxd fp bg-clr-tr top0 left0 zi52">
+         <!--form close button-->
+         <button class="close-btn hw40 clr24 abs right10 top10 fts40 lh8 bld2 rc50p pdb10 bg-clr-tr hov-bg-clr-25 bd-clr24 cur-ptr">&times;</button>
+
+         <div class="purchase-form ctr-hv w650 ha bs-2-3 bg-clr2 zi52 bs-1-3 rc4">
             <div class="fp ys">
                <div class="form-head fph h140 bb rltv pdlr20 pdtb20">
                   <h1 class="mlr30 bb ctr-v blk fph-90 zi1 bd-clr22"></h1>
@@ -161,17 +162,18 @@
                         <div class="fields-row mb4p">
                            <div class="field-wrap">
                               <label for="rent-space">Space (sq m) * [Min 20][Max 165]</label>
-                              <input class="h40" value="80" type="number" max="165" min="20" id="rent-space" placeholder="" title=""
+                              <input class="h40 rent-space" value="20" type="number" max="165" min="20" id="rent-space" placeholder="" title=""
                                      name="space">
                            </div>
                            <div class="field-wrap">
                               <label for="months">Number of Months * [Min 1]</label>
-                              <input class="h40" value="3" type="number" min="1" id="months" placeholder="" title="" name="period">
+                              <input class="h40" value="1" type="number" min="1" id="months" placeholder="" title="" name="period">
                            </div>
                         </div>
                         <div class="fields-row mb4p">
                            <label for="months">Move-in Date *</label>
-                           <input class="h40" type="date" value="08/09/2018" min="1" id="move-in-date" placeholder="" title="" name="sp">
+                           <input class="h40" type="date" value="08/09/2018" min="1" id="move-in-date" placeholder="" title=""
+                                  name="sp">
 
                         </div>
                         <!--<div class="fields-row ac">-->
@@ -243,14 +245,18 @@
                   </div>
                </div>
                <!--Progess and success message container-->
-               <div class="success-msg-container pd30 hidden">
+               <div class="success-msg-container pd30 abs right100p-85">
                   <!---->
                   <!--<p class="ac fts24 h50 mb30">Working on it please wait</p>-->
-                  <div class="fph ac pdtb30"><!--<img src="" alt="">-->
+                  <div class="fph ac pdtb30 oh"><!--<img src="" alt="">-->
                      <div class="circle-loader mb30">
+                        <div class="fp amount">
+                           <span class="currency">$</span> <span class="bill"><%= warehouse.price * 20 %></span>
+                        </div>
                         <div class="checkmark draw"></div>
                      </div>
-                     <div class="fields-row ac">
+                     <!--Dismiss Button-->
+                     <div class="fields-row ac hidden">
                         <button id="toggle" class="bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25">Dismiss</button>
                      </div>
                      <!--<p><button id="toggle" type="button" class="btn btn-success">Toggle Completed</button></p>-->
@@ -341,6 +347,7 @@
 <script>
    (function () //don't pollute the global scope
    {
+
       let Bu               = Bee.Utils,
           Bd               = Bee.Dom,
           Be               = new Bee.Event.EventManager(),
@@ -348,6 +355,28 @@
           payt             = $(".payment-conf"),
           confirmContainer = $('.confirm-container');
       let step = 1;
+
+      /**
+       *
+       * @param price {Number} price per square metre per month
+       * @param space {Number} Amount of space required (square metres)
+       * @param duration {Number} Number of months required
+       */
+      let calculateBill = function(price, space, duration){
+         return price * space * duration
+      };
+
+
+      let price = <%= warehouse.price %>;
+      let rentSpace = $('#rent-space'), months = $('#months');
+      Be.bindOnAll([rentSpace, months], 'change', function (e)
+      {
+         let target = e.target, val = target.value;
+         if(!Bee.String.isEmpty(rentSpace.value) && !Bee.String.isEmpty(months.value))
+         {
+            $('.amount .bill').innerText = calculateBill(price, rentSpace.value, months.value);
+         }
+      });
 
       Be.bind($("button.rent"), "click", function (e)
       {
@@ -390,17 +419,28 @@
 
       Be.bind($('.confirm-btn'), 'click', function (e)
       {
+
          Bd.addClass($(".form-head"), 'hidden');
          Bd.addClass(confirmContainer, 'hidden');
-         Bd.removeClass($('.success-msg-container'), 'hidden');
+
+         let $success = $('.success-msg-container');
+         Bd.removeClass($success, 'hidden');
+         Bd.removeClass($success, 'abs');
+         Bd.addClass($success.querySelector('.circle-loader'), 'loading');
+
+
          let purchase = $('.purchase-form');
          Bd.removeClass(purchase, 'w650');
          Bd.addClass(purchase, 'w400');
+         Bd.addClass(purchase, 'h350');
 
+         //TODO send ajax request here to submit the data
          let timer = setTimeout(function ()
                                 {
+                                   //TODO do the following when the request is successful
                                    Bd.addClass($('.circle-loader'), 'load-complete');
                                    Bd.toggleDisplay($('.checkmark'));
+                                   Bd.removeClass($('#toggle').parentElement, 'hidden');
                                    clearTimeout(timer);
                                 }, 3000)
       });
