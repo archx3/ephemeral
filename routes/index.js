@@ -8,12 +8,18 @@ var Warehouses = mongoose.model('warehouses');
 /* GET home page. */
 router.get('/', function (req, res)
 {
-   req.isAuthenticated() ? res.redirect('/users/dashboard') : res.redirect('/users/login');
+    if(req.isAuthenticated()){
+        req.user.user_type === "operator"? res.redirect('/users/dashboard') : res.redirect('/users/home');
+    }
+    res.render('login');
 });
 
 router.get('/register', function (req, res)
 {
-   req.isAuthenticated() ? res.redirect('/users/dashboard') : res.redirect('/users/register')
+   if(req.isAuthenticated()){
+       req.user.user_type === "operator"? res.redirect('/users/dashboard') : res.redirect('/users/home');
+}
+    res.render('login');
 });
 
 router.get('/logout', function (req, res)
@@ -24,7 +30,7 @@ router.get('/logout', function (req, res)
 
 router.get('/home', function (req, res)
 {
-   req.isAuthenticated() ? res.render('home') : res.redirect('/users/login');
+    res.redirect('/users/home');
 });
 
 //using get for search since search params don't have to be hidden
