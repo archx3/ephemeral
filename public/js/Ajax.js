@@ -64,11 +64,7 @@
     * @class
     */
    class Ajax {
-      /**
-       *
-       * @param options {{baseUrl : String, data : {}, method  : "GET"} | null}
-       * @constructor
-       */
+
       constructor(options = null)
       {
          this.options = {

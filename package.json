@@ -23,5 +23,14 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "session-file-store": "^1.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.1.0",
+    "cssnano": "^4.0.5",
+    "gulp": "^3.9.1",
+    "gulp-closure-compiler": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0"
   }
 }

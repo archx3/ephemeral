@@ -2414,9 +2414,8 @@ const BODY = document ? document.body : null;
          // TODO(: Update param signature to be non-nullable.
          Bu.assert(node, 'Node cannot be null or undefined.');
 
-         /** @type {!Document} */
-         return (node.nodeType == Bee.Dom.NodeType.DOCUMENT ?
-                 node : node.ownerDocument || node.document);
+
+         return (node.nodeType === Bee.Dom.NodeType.DOCUMENT ? node : node.ownerDocument || node.document);
       },
 
       /**
@@ -2725,9 +2724,9 @@ const BODY = document ? document.body : null;
                   Bee.Dom.setTextContent(td, Bee.String.Unicode.NBSP);
                }
 
-               if (useContent)
-               {
-               }
+               //if (useContent)
+               //{
+               //}
 
                tr.appendChild(td);
             }

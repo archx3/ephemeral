@@ -371,14 +371,12 @@
     * @param eventCount
     * @returns {{evEl: *, eventCount: (*|null)}}
     * @constructor
+    *
     */
    EventManager.prototype.eventElement = function (element, eventCount)
    {
       let eventElement = this.eventElements.filter(function (eventElement)
                                                    {
-                                                      /**
-                                                       * @returns {Boolean}
-                                                       */
                                                       return eventElement.element === element;
 
                                                    })[0];
