@@ -162,9 +162,10 @@ router.post('/:id', function (req, res)
               //ensure that space is less than wh.empty
                if(space > wh.free_space) res.send("Requires more than available");
               //post a booking?
+               const user = req.user;
                const booking = {
                   operator: wh.operator,
-                   depositor: req.user,
+                   depositor: user,
                    warehouse: wh,
                    bill: bill,
                    starting: sp,
@@ -178,7 +179,13 @@ router.post('/:id', function (req, res)
                Bookings.create(booking)
                    .then(function (booking) {
                         //
-                       res.render('depositor-dashboard-messages', {booking: booking, user: req.user}); //changedhere
+                       Bookings.find({depositor: user})
+                           .then(function (bookings) {
+                               res.render('depositor-dashboard-messages', {bookings: bookings, user: user}); //changedhere
+                       }).catch(function (err) {
+                           throw err;
+                       })
+
                    }).catch(function (err) {
                    throw err;
                })

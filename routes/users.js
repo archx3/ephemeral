@@ -73,7 +73,7 @@ router.get('/login', function (req, res) {
     if (req.isAuthenticated()) {
         req.user.user_type === "operator" ? res.redirect(req.baseUrl + '/dashboard') : res.redirect(req.baseUrl + '/home');
     }else{
-        res.redirect('/users/login');
+        res.render('login');
     }
 
 });
