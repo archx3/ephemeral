@@ -5,78 +5,58 @@
    <title>Sharehouse</title>
    <!--<link rel="stylesheet" href="/css/vendor/main.css">-->
    <%- include('core-styles')%>
+   <link rel="stylesheet" href="/css/sh/home-search.css">
 </head>
 <body class="fp">
 <div class="blk fp global-host ys">
    <%- include('home-nav')%>
-   <section id="home" class="container home fp">
-      <div class="fp blk abs bg-img"></div>
-      <div class="fp blk abs sh-bg bgs-cov bg-nr">
-         <!--<img src="css/images/SharehouseLogo.png" class="fph" alt="">-->
-      </div>
-      <div class="fp blk abs overlay"></div>
+   <section id="home" class="container home fp rltv" >
 
-      <!--<div class="fp fl rltv">-->
-      <!--<div class="fph row-2">-->
-      <!--<div class="fpv5 fph maa p25 home-text pd30">-->
-      <!--<h3>Sharehouse</h3>-->
-      <!--<p class="bdr fph6 m0a uc pd5 bld7 ltsp3 slogan">Storage space for anyone</p>-->
-      <!--</div>-->
-      <!--</div>-->
-      <div class="fph row-2">
-         <div id="forms-parent" class="bg-clr2 ctr-hv landing-form no-input-spacing container rc elevated fph8">
-            <div class="fph h50 pdt20 ac bld5"> Find a warehouse with at least one property</div>
-            <div class="fp" id="opform">
-               <form action="/search" method="GET" class="operator pd30 pdtb20">
-                  <div class="fields-row flex-cols-3-1 mb10">
-                     <div class="fpv">
-                        <div class="w35 inputIcon iblk fpv bdr br0 pdt8 pdb7 fl ac bld7" title="Desired Space">
+      <div class="fph row-2 ctr-hv">
+         <div class="sharehouse-logo-her h150 pdtb50 fph rltv">
+            <!--LARGE LOGO HERE-->
+            <div class="fph4 h80 ctr-hv">
+               <img src="/images/Sharehouse-long.svg" alt="" class="fpv ctr-hv">
+            </div>
+         </div>
+         <div id="forms-parent" class="ctr-h bs-5-2 h60 pdl10 landing-form no-input-spacing container rc elevated fph8">
+            <div class="fp home-form" id="opform">
+               <!--Form-->
+               <form action="/search" method="GET" class="operator">
+                  <div class="">
+                     <div class="param fpv w37p fl m0 iblk br">
+                        <div class="ic w35 inputIcon iblk fpv pdt8 pdb7 fl ac bld7" title="Desired Space">
                            <!--<i class="fa fa-square-o fts100p" style=""></i>--> >=
                         </div>
-                        <input class="inp fph-95 fl" type="number" data-type="date" name="size" id="size"
+                        <input class="inp fph-90 fl bld5" type="number" data-type="date" name="size" id="size"
                                value="80" placeholder="Size">
-                        <div class="w55 h38 inputIcon iblk fpv bdr bl0 pd3 pdt8 pdb7 ac cur-dft fts14 bld lh10" style="height: 38px;" >
+                        <div class="ic w55 fpv inputIcon iblk fpv bl0 pd3 pdt8 pdb7 ac cur-dft fts14 bld lh10" style="height: 38px;" >
                            (sq m)
                         </div>
                      </div>
-                     <div class="fpv">
-                        <select id="" title="" class="h38">
-                           <option value="">Select Type of Good</option>
-                           <option selected="selected" value="General">General</option>
-                           <option value="Food and Beverages">Food and Beverages</option>
-                           <option value="Petroleum">Petroleum</option>
-                           <option value="Furniture">Furniture</option>
-                           <option value="Electronics">Electronics</option>
-                           <option value="Vehicles">Vehicles</option>
+                     <div class="param fpv w22p iblk pdlr10">
+                        <select name="typeOfGoods" id="sdsdsd" title="">
+                           <option >Select Type of Good</option>
+                           <option selected="selected">General</option>
+                           <option>Food and Beverages</option>
+                           <option>Petroleum</option>
+                           <option>Furniture</option>
+                           <option>Electronics</option>
+                           <option>Vehicles</option>
                         </select>
                      </div>
-                     <div class="fpv">
-                        <div class="w35 inputIcon iblk fpv bdr br0 pd9 pdt8 pdb7 fl ac" data-sbtn="usrDob">
+                     <div class="param fpv w37p iblk bl pdr10">
+                        <div class="ic w35 inputIcon iblk fpv br0 pd9 pdt8 pdb7 fl ac" data-sbtn="usrDob">
                            <i class="fa fa-map-marker fts100p" style=""></i>
                         </div>
-                        <input class="inp fph-35 fr" type="text" data-type="date" name="location" id="location"
+                        <input class="inp fph-35 fr bld5" type="text" data-type="date" name="location" id="location"
                                style="" value="Accra, Ghana" placeholder="Location">
                      </div>
-                  </div>
-                  <!--<div class="fields-row flex-cols-2-1">
-                     <div class="col-3 fpv">
-                        <input type="text" id="op-lastname" placeholder="last Name" title="" name="">
+                     <div class="param submit fpv w4p iblk fr bl ">
+                        <button class=" pd10 fr fp ac" type="submit"><i class="fa fa-search"></i></button>
                      </div>
-                     <div class="fpv">
-                        <div class="w35 inputIcon iblk fpv bdr br0 pd9 pdt8 pdb7 fl ac cur-ptr">
-                           <i class="fa fa-lightbulb-o fts100p" style=""></i>
-                        </div>
-                        <input class="inp fph-75 fl" type="text" data-type="date" name="dob" id="usrDob"
-                               style="" value="" placeholder="Date of Birth">
-                        <div class="w35 inputIcon iblk fpv bdr bl0 pd9 pdt8 pdb7 ac cur-ptr" >
-                           <i class="fa fa-meh-o fts100p" style=""></i>
-                        </div>
-                     </div>
-                  </div>-->
-                  <!--button-->
-                  <div class="fields-row">
-                     <button class="pdlr40 pdtb10 rc20 fr h37 min-w37" type="submit">FIND</button>
                   </div>
+
                </form>
             </div>
 
@@ -84,58 +64,7 @@
 
       </div>
    </section>
-   <footer class="ctr blk fdg-h pdlr50 pdtb20">
-      <div class="footer-above">
-         <div class="container m0a">
-            <div class="row fp ctr">
-               <div class="footer-col col-3">
-                  <h3>Location</h3>
-                  <p>25 Aluguntugun
-                     <br>East Legon, GH</p>
-               </div>
-               <div class="footer-col col-3">
-                  <h3>Around the Web</h3>
-                  <div class="menu h-menu m0a ctr atw blk">
-                     <ul class="list-inline fp">
-                        <li class="list-inline-item">
-                           <a class="btn-social btn-outline" href="#">
-                              <i class="fa fa-fw fa-facebook"></i>
-                           </a>
-                        </li>
-                        <li class="list-inline-item">
-                           <a class="btn-social btn-outline" href="#">
-                              <i class="fa fa-fw fa-google-plus"></i>
-                           </a>
-                        </li>
-                        <li class="list-inline-item">
-                           <a class="btn-social btn-outline" href="#">
-                              <i class="fa fa-fw fa-twitter"></i>
-                           </a>
-                        </li>
-                        <li class="list-inline-item">
-                           <a class="btn-social btn-outline" href="#">
-                              <i class="fa fa-fw fa-linkedin"></i>
-                           </a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="footer-col col-3">
-                  <h3>About Sharehouse, Inc</h3>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="footer-below clearfix">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12">
-                  Copyright © Sharehouse, Inc. 2017
-               </div>
-            </div>
-         </div>
-      </div>
-   </footer>
+   <%- include('core-footer')%>
 </div>
 
 <!--<script src="js/core/Barge.Utils.js"></script>-->
