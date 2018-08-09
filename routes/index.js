@@ -177,24 +177,24 @@ router.get('/search', function (req, res)
          // let's deal with it as such
       }
 
-      Warehouses.find(filterParams).then(function (warehouses)
-                                   {
-                                      //the warehouses <- list
-                                      res.render('search', {
-                                         warehouses,
-                                         user        : req.user,
-                                         size        : req.query.size || "",
-                                         location    : req.query.location || "",
-                                         typeOfGoods : req.query.type || "",
-                                         togs        : ["General", "Food and Beverages",
-                                                        "Petroleum", "Furniture",
-                                                        "Electronics", "Vehicles"]
-                                      })
-                                   }).catch(function (err)
-                                            {
-                                               //error occured
-                                               throw err;
-                                            });
+      //Warehouses.find(filterParams).then(function (warehouses)
+      //                             {
+      //                                //the warehouses <- list
+      //                                res.render('search', {
+      //                                   warehouses,
+      //                                   user        : req.user,
+      //                                   size        : req.query.size || "",
+      //                                   location    : req.query.location || "",
+      //                                   typeOfGoods : req.query.type || "",
+      //                                   togs        : ["General", "Food and Beverages",
+      //                                                  "Petroleum", "Furniture",
+      //                                                  "Electronics", "Vehicles"]
+      //                                })
+      //                             }).catch(function (err)
+      //                                      {
+      //                                         //error occured
+      //                                         throw err;
+      //                                      });
 
       /*Warehouses.find({
                          free_space : { $gte : params.size },

@@ -173,10 +173,12 @@ router.post('/:id', function (req, res)
                    space: space,
                };
 
+               //TODO if a booking is accepted
+              //TODO reduce the amount of space available by the amount booked
                Bookings.create(booking)
                    .then(function (booking) {
                         //
-                       res.redirect('/users/dashboard/messages');
+                       res.redirect('/users/home'); //changedhere
                    }).catch(function (err) {
                    throw err;
                })

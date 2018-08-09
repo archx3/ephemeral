@@ -102,7 +102,7 @@
       </div>
    </section>-->
    <!--Pyay't form container-->
-   <section class="payment-conf overlay fxd fp top0 left0 zi50">
+   <section class="payment-conf overlay fxd fp top0 left0 zi50 hidden">
 <!--Overlay to make form modal-->
       <section class="overlay fxd fp op8 bg-clr2 top0 left0 zi50"></section>
       <!--Section with form-->
@@ -229,8 +229,10 @@
                         <input class="h40" value="+254260721202" type="text" id="phone-num" placeholder="" title="" name="">
                      </div>
                      <div class="fields-row ac">
-                        <button type="submit" class="m0a next-btn bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25">Next
+                        <button type="button"  class="m0a next-btn bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25">Next
                         </button>
+
+                        <button class="hidden" id="book" type="submit"></button>
                      </div>
                   </form>
                </div>
@@ -241,7 +243,7 @@
                      <p class="fts14">make sure you have enough funds</p>
                   </div>
                   <div class="fields-row ac">
-                     <button class="confirm-btn bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25" >Confirm</button>
+                     <label for="book" class="confirm-btn bg-clr23 hov-bg-clr24 cur-ptr clr2 pdlr40 pdtb10 rc20 mtb25" >Confirm</label>
                   </div>
                </div>
                <!--Progess and success message container-->
