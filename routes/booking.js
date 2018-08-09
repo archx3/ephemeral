@@ -204,7 +204,7 @@ router.get('/accept/:id', function (req, res) {
                     booking.status = "accepted";
                     booking.save();
                     wh.save();
-                    res.redirect('/users/dashboard');
+                    res.redirect('/users/dashboard/messages');
                 }).catch(function (err) {
                 throw err;
             })
@@ -221,11 +221,27 @@ router.get('/reject/:id', function (req, res) {
         .then(function (booking) {
             booking.status = "declined";
             booking.save();
+            res.redirect('/users/dashboard/messages');
         }).catch(function (err) {
         throw err;
     })
 });
 
+
+router.get('/delete/:id', function (req, res) {
+    const id = req.params.id;
+    Bookings.findOne({_id: id})
+        .then(function(booking){
+            Warehouse.findOne({_id: booking.warehouse}).then(function (wh) {
+                wh.free_space += booking.space;
+                wh.save();
+            });
+            Bookings.remove(booking).then(function (booking) {
+                res.redirect("/users/dashboard/messages");
+            });
+        }).catch(err => {throw err});
+
+});
 
 
 module.exports = router;
