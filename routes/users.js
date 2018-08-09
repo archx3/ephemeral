@@ -96,7 +96,7 @@ router.get('/dashboard', function (req, res)
       console.log(user, "req user");
       Warehouse.find({ operator : user }).then(function (list)
                                                {
-                                                  res.render('operator-dashboard', { warehouses : list, user : user })
+                                                  res.render('operator-dashboard', { warehouses : list, user : user,pending: getPending()  })
                                                }).catch(function (err)
                                                         {
                                                            res.send("Error");
@@ -110,6 +110,19 @@ router.get('/dashboard', function (req, res)
    }
 });
 
+function getPending(){
+    Bookings.find()
+        .then(function (bookings) {
+            const pending = bookings.filter(function (booking) {
+                return booking.status === "pending";
+            });
+            return pending.length;
+        }).catch(function (err) {
+        throw err;
+    });
+
+}
+
 //Depositor Dashboard
 router.get('/dashboard/messages', function (req, res)
 {
@@ -120,12 +133,8 @@ router.get('/dashboard/messages', function (req, res)
         .populate('warehouse')
         .then(function (bookings) {
            //count pending bookings //changedhere GRG
-           let pending = 0;
-           bookings.forEach(function (booking) {if(booking.status === 'pending'){pending++;}});
 
-           console.log(pending, "this are the pendngs");
-            //render them
-            res.render('operator-dashboard-messages', {user : req.user, bookings: bookings, pending : pending});
+            res.render('operator-dashboard-messages', {user : req.user, bookings: bookings, pending : getPending()});
         }).catch(function (err) {
         throw err;
     })
