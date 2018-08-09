@@ -22,6 +22,7 @@ router.post('/', function(req, res){
         free_space: req.body.empty,
         price: req.body.price,
         operator: req.user,
+        description: req.body.description
 
     };
     const warehouse = Warehouse.create(wh);
@@ -41,7 +42,6 @@ router.post('/', function(req, res){
 
 router.get('/listings/id/:id', function (req, res) {
     const id = req.params.id;
-    console.log(id);
 
     Warehouse.findOne({_id: id}).then(function (wh) {
         res.render('listing', {warehouse: wh});
@@ -81,7 +81,13 @@ router.get('/store', function(req, res){
     })
 });
 
-
+router.get('/remove/:id', function (req, res) {
+    const id = req.params.id;
+    Warehouse.deleteOne({_id: id}, function (err, rs) {
+        if(err) res.send("Warehouse not found");
+        res.redirect('/users/dashboard');
+    })
+});
 
 //exports.warehouseRouter = router;
  module.exports = router;

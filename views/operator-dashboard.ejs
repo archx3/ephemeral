@@ -17,7 +17,7 @@
       <!--TOOLBOX-->
       <div class="toolbox-container w60 fpv fl iblk bg-clr24">
          <!--Add the toolbox (sidebar)-->
-         <%- include("operator-sidebar", {active : 'home'}) %>
+         <%- include("operator-sidebar", {active : 'home', pending: ''}) %>
       </div>
       <!--desktop-->
       <div class="desktop fpv fph-60 iblk pd30 bg-clr27 ys">
@@ -41,12 +41,11 @@
                <% /* for(let i = 1; i <= 5; i++){*/ %>
                <% /*if(i % 5 === 0){*/ %>
                <div class="fp flex-cols-4-1 mb30">
-                  <% warehouses.forEach(function (warehouse)
-                  { %>
+                  <% warehouses.forEach(function (warehouse) { %>
                   <div class="dsb-wh-card h350 bg-clr2 bs-2-3 mr20 rltv">
-                     <button data-tooltip="Remove" tooltip-pos="left"
-                             class="remove-wh-btn bld7 hw30 rc16 bg-clr23 clr2 abs btm100p-15 left100p-15 pdlr5 ac bdr">&minus;
-                     </button>
+                     <a data-tooltip="Remove" tooltip-pos="left" href="/warehouses/remove/<%=warehouse._id%>"
+                             class="iblk remove-wh-btn bld7 hw30 rc16 bg-clr23 clr2 abs btm100p-15 left100p-15 pdlr5 pdt5 ac bdr">&minus;
+                     </a>
                      <!--name part of card-->
                      <div class="wh-name h50 pdtb5 pdlr10 bld6 ac">
                         <p class="fts16"><%= warehouse.name %></p>
@@ -65,7 +64,7 @@
                      </div>
                      <!--<img class="ctr-hv h290" src="#" alt="" height="140"></div>-->
                      <div class="wh-detail pdtb10 pdlr10 bld6 ac">
-                        <p class="ft18 oh max-h50 lh15">Clean Cold Room with CCTV camera, as washroom, security post</p>
+                        <p class="ft18 oh max-h50 lh15"><%= warehouse.description%></p>
                         <p class="fts12 clr23 pdt10"> $ <%= warehouse.price %>.00 /sq m / Month</p>
                      </div>
                   </div>
@@ -110,7 +109,7 @@
                            <!--warehouse type-->
                            <div class="fields-row mb4p">
                               <label for="type-of-goods">Type of Goods allowed</label>
-                              <select class="h40" id="type-of-goods" title="" name="">
+                              <select class="h40" id="type-of-goods" title="">
                                  <option>Select Type of Good</option>
                                  <option>Food and Beverages</option>
                                  <option>Petroleum</option>
@@ -144,7 +143,7 @@
                            <!--detailed description-->
                            <div class="fields-row">
                               <label for="description">Description</label>
-                              <textarea class="" id="description" title="" name="">
+                              <textarea class="" id="description" title="" name="description">
                               </textarea>
                            </div>
                         </div>

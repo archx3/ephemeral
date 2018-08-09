@@ -175,7 +175,7 @@ router.post('/:id', function (req, res)
 
                Bookings.create(booking)
                    .then(function (booking) {
-                      console.log(booking);
+                        //
                        res.redirect('/users/dashboard/messages');
                    }).catch(function (err) {
                    throw err;

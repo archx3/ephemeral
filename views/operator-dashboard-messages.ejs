@@ -9,7 +9,6 @@
 </head>
 <body class="rltv oh">
 <div class="blk fp global-host ys rltv">
-
    <!--Add the nav bar-->
    <%- include('operator-nav') %>
 
@@ -46,8 +45,9 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <% if(bookings){ %>
+                              <% if(bookings.length){ %>
                               <% bookings.forEach(booking => { %>
+                              <% if(booking.warehouse && booking.depositor){%>
                               <tr class="pd5 h60 bld5 bb">
                                  <td class="ac pd5 va-m">
                                     <div class="hw40 bdr ac oh rltv rc2 m0a">
@@ -81,6 +81,7 @@
                                        <i class="fa fa-times"></i> <!--We can name this reject TODO ask what team thinks -->
                                     </button>
                                     <%}%>
+                                     <%}%>
                                  </td>
 
                               </tr>
@@ -175,7 +176,7 @@
                         <!--detailed description-->
                         <div class="fields-row">
                            <label for="description">Description</label>
-                           <textarea class="" id="description" title="" name="">
+                           <textarea class="" id="description" title="" name="description">
                               </textarea>
                         </div>
                      </div>
