@@ -121,13 +121,9 @@ router.get('/dashboard/messages', function (req, res)
         .then(function (bookings) {
            //count pending bookings //changedhere GRG
            let pending = 0;
-           bookings.forEach(function (booking)
-                            {
-                               if(booking.status === 'pending'){
-                                  pending++;
-                               }
-                            });
-           console.log(pending);
+           bookings.forEach(function (booking) {if(booking.status === 'pending'){pending++;}});
+
+           console.log(pending, "this are the pendngs");
             //render them
             res.render('operator-dashboard-messages', {user : req.user, bookings: bookings, pending : pending});
         }).catch(function (err) {

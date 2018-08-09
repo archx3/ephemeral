@@ -17,14 +17,13 @@
       <!--TOOLBOX-->
       <div class="toolbox-container w60 fpv fl iblk bg-clr24">
          <!--Add the toolbox (sidebar)-->
-         <%- include("operator-sidebar", {active : 'messages', pending : 'pending'}) %>
+         <%- include("operator-sidebar", {active : 'messages', pending : pending}) %>
       </div>
       <!--desktop-->
       <div class="desktop fpv fph-60 iblk pd30 bg-clr27 ys">
          <!--Greeting section-->
          <section class="h50 fph clr10 mb20">
 
-            <p class="fts36 bld5 mb10">Hi <%= pending %></p>
             <p class="fts36 bld5 mb10">Hi <%= user.username %></p>
             <!--<p class="fts32 bld4">Here's what happening with your store</p>-->
          </section>
