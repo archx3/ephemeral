@@ -109,7 +109,7 @@ var test_support = {
   send_message,
   retrieve_sentbox,
   retrieve_all_unread
-}
+};
 
 //exports.messagingRouter = router;
 module.exports = router;
