@@ -74,12 +74,12 @@
                                  <td class="ac va-m">
                                     <% if(booking.status === 'pending'){%>
                                     <!--Accept and decline buttons TODO only show if a booking is pending-->
-                                    <button class="h30 rc15 bg-clr26 clr2 cur-ptr pdlr20 ac rltv" data-tooltip="Accept">
+                                    <a class="h30 rc15 bg-clr26 clr2 cur-ptr pdlr20 ac rltv" data-tooltip="Accept" href="/bookings/accept/<%=booking._id%>">
                                        <i class="fa fa-check"></i>
-                                    </button>
-                                    <button class="h30 rc15 bg-clr9 clr2 cur-ptr pdlr20 ac rltv" data-tooltip="Decline">
+                                    </a>
+                                    <a class="h30 rc15 bg-clr9 clr2 cur-ptr pdlr20 ac rltv" data-tooltip="Decline" href="/bookings/reject/<%=booking._id%>">
                                        <i class="fa fa-times"></i> <!--We can name this reject TODO ask what team thinks -->
-                                    </button>
+                                    </a>
                                     <%}%>
                                      <%}%>
                                  </td>
