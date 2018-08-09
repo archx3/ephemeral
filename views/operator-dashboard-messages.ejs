@@ -9,86 +9,6 @@
 </head>
 <body class="rltv oh">
 <div class="blk fp global-host ys rltv">
-
-<!--<<<<<<< HEAD-->
-    <!--&lt;!&ndash;Add the nav bar&ndash;&gt;-->
-    <!--<%- include('operator-nav') %>-->
-
-    <!--<section id="workspace" class="container home fph fpv fpv-80 mt80 oh">-->
-        <!--&lt;!&ndash;TOOLBOX&ndash;&gt;-->
-        <!--<div class="toolbox-container w60 fpv fl iblk bg-clr24">-->
-            <!--&lt;!&ndash;Add the toolbox (sidebar)&ndash;&gt;-->
-            <!--<%- include("operator-sidebar") %>-->
-        <!--</div>-->
-        <!--&lt;!&ndash;desktop&ndash;&gt;-->
-        <!--<div class="desktop fpv fph-60 iblk pd30 bg-clr27 ys">-->
-            <!--&lt;!&ndash;Greeting section&ndash;&gt;-->
-            <!--<section class="h50 fph clr10 mb20">-->
-                <!--<p class="fts36 bld5 mb10">Hi <%= user.username %></p>-->
-                <!--&lt;!&ndash;<p class="fts32 bld4">Here's what happening with your store</p>&ndash;&gt;-->
-            <!--</section>-->
-            <!--&lt;!&ndash;&ndash;&gt;-->
-            <!--<section class="h400 fph clr10 mb20">-->
-                <!--<div class="fp ">-->
-                    <!--<div class="fpv fph fl bg-clr2 bdr iblk rltv">-->
-                        <!--<div class="fp">-->
-                            <!--<div class="fp bg-clr2">-->
-                                <!--<table class="fp">-->
-                                    <!--<thead class="">-->
-                                    <!--<tr class="h40">-->
-                                        <!--<th class="bb2 va-m">&nbsp;</th>-->
-                                        <!--<th class="pd10 bb2 va-m">Space</th>-->
-                                        <!--<th class="pd10 bb2 va-m">Amount</th>-->
-                                        <!--<th class="pd10 bb2 va-m al">Customer</th>-->
-                                        <!--<th class="bb2 pdr10 va-m">Status</th>-->
-                                        <!--<th class="bb2 pdr10 va-m al">Date</th>-->
-                                    <!--</tr>-->
-                                    <!--</thead>-->
-                                    <!--<tbody>-->
-                                    <!--<% if(bookings && bookings.warehouse && warehouse.depositor && user){ %>-->
-                                    <!--<% bookings.forEach(booking => { %>-->
-                                    <!--<tr class="pd5 h60 bld5 bb">-->
-                                        <!--<td class="ac pd5 va-m">-->
-                                            <!--<div class="hw40 bdr ac oh rltv rc2 m0a">-->
-                                                <!--<a href="/warehouses/listings/<%= booking.warehouse._id %>">-->
-                                                    <!--<img class="fpv ctr-h" style="max-width: initial"-->
-                                                         <!--src="/css/images/refrigerated-wh.jpg" alt="WH Image">-->
-                                                <!--</a>-->
-                                            <!--</div>-->
-
-
-                                        <!--</td>-->
-                                        <!--<td class="va-m ac"><%= booking.warehouse.free_space %></td>-->
-                                        <!--<td class="ac va-m">$ <%= booking.bill %></td>-->
-                                        <!--<td class="ellipsify va-m  max-w150"-->
-                                            <!--title="name "><%= booking.depositor.first_name + " " + booking.depositor.last_name %></td>-->
-                                        <!--<td class="ac va-m">-->
-                                            <!--<button class="h30 rc15 min-w90 bg-clr15 clr2 cur-ptr pdlr20 ac">-->
-                                                <!--<%= booking.status %>-->
-                                            <!--</button>-->
-                                        <!--</td>-->
-                                        <!--<td class="va-m pd5">-->
-                                            <!--<%= booking.starting.toLocaleDateString() %>-->
-                                        <!--</td>-->
-
-                                    <!--</tr>-->
-                                    <!--<% }) %>-->
-                                    <!--<% } %>-->
-
-                                    <!--</tbody>-->
-                                    <!--<tfoot>-->
-                                    <!--<tr>-->
-
-                                    <!--</tr>-->
-                                    <!--</tfoot>-->
-                                <!--</table>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-        <!--</div>-->
-    <!--</section>-->
-<!--=======-->
    <!--Add the nav bar-->
    <%- include('operator-nav') %>
 
@@ -125,8 +45,9 @@
                               </tr>
                            </thead>
                            <tbody>
-                              <% if(bookings){ %>
+                              <% if(bookings.length){ %>
                               <% bookings.forEach(booking => { %>
+                              <% if(booking.warehouse && booking.depositor){%>
                               <tr class="pd5 h60 bld5 bb">
                                  <td class="ac pd5 va-m">
                                     <div class="hw40 bdr ac oh rltv rc2 m0a">
@@ -160,6 +81,7 @@
                                        <i class="fa fa-times"></i> <!--We can name this reject TODO ask what team thinks -->
                                     </button>
                                     <%}%>
+                                     <%}%>
                                  </td>
 
                               </tr>
