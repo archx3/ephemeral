@@ -22,7 +22,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+// "mongodb://sharehouse:Share1nsecurePWD@ds257851.mlab.com:57851/sharehouse"
 mongoose.connect("mongodb://sharehouse:Share1nsecurePWD@ds257851.mlab.com:57851/sharehouse", {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
