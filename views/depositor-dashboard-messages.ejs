@@ -10,13 +10,13 @@
 <body class="rltv oh">
 <div class="blk fp global-host ys rltv">
     <!--Add the nav bar-->
-    <%- include('operator-nav') %>
+    <%- include('depositor-nav')%>
 
     <section id="workspace" class="container home fph fpv fpv-80 mt80 oh">
         <!--TOOLBOX-->
         <div class="toolbox-container w60 fpv fl iblk bg-clr24">
             <!--Add the toolbox (sidebar)-->
-            <%- include("operator-sidebar", {active : 'messages', pending : pending}) %>
+            <%- include("operator-sidebar", {active : 'messages', pending: null}) %>
         </div>
         <!--desktop-->
         <div class="desktop fpv fph-60 iblk pd30 bg-clr27 ys">
@@ -35,15 +35,14 @@
                                 <table class="fp">
                                     <thead class="">
                                     <tr class="h40">
-                                        <th class="bb2 va-m">&nbsp;</th>
+                                        <th class="pd10 bb2 va-m">Schedule</th>
                                         <th class="pd10 bb2 va-m">Space</th>
-                                        <th class="pd10 bb2 va-m">Remaining</th>
                                         <th class="pd10 bb2 va-m">Amount</th>
-                                        <th class="pd10 bb2 va-m al">Customer</th>
+                                        <th class="pd10 bb2 va-m al">Warehouse</th>
                                         <th class="bb2 pdr10 va-m">Status</th>
-                                        <th class="bb2 pdr10 va-m al">Date</th>
                                         <th class="bb2 pdr10 va-m al">&nbsp;</th>
                                         <th class="bb2 pdr10 va-m al">&nbsp;Action</th>
+                                        <th class="bb2 pdr10 va-m al">&nbsp;</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -51,54 +50,36 @@
                                     <% bookings.forEach(booking => { %>
                                     <% if(booking.warehouse && booking.depositor){ %>
                                     <tr class="pd5 h60 bld5 bb">
-                                        <td class="ac pd5 va-m">
-                                            <div class="hw40 bdr ac oh rltv rc2 m0a">
-                                                <a href="/warehouses/listings/<%= booking.warehouse._id %>">
-                                                    <img class="fpv ctr-h" style="max-width: initial"
-                                                         src="/css/images/refrigerated-wh.jpg" alt="WH Image">
-                                                </a>
-                                            </div>
-
-
-                                        </td>
+                                        <td class="va-m ac"><%= booking.starting.toLocaleDateString() %></td>
                                         <td class="va-m ac"><%= booking.space %></td>
-                                        <td class="va-m ac"><%= booking.warehouse.free_space %></td>
                                         <td class="ac va-m">$ <%= booking.bill %></td>
-                                        <td class="ellipsify va-m  max-w150"
-                                            title="name "><%= booking.depositor.first_name + " " + booking.depositor.last_name %></td>
+                                        <td class="ac va-m"><%= booking.warehouse.name %></td>
                                         <td class="ac va-m">
                                             <button class="h30 rc15 min-w90 <%= booking.status === 'pending' ? 'bg-clr15' : booking.status === 'declined' ? 'bg-clr9' : booking.status === 'declined' ? 'bg-clr22' : ''; %> clr2 cur-ptr pdlr20 ac">
                                                 <%= booking.status %>
                                             </button>
                                         </td>
                                         <td class="va-m pd5">
-                                            <%= booking.starting.toLocaleDateString() %>
-                                        </td>
-                                        <td class="ac va-m">
-                                            <% if(booking.status === 'pending'){ %>
-                                            <!--Accept and decline buttons TODO only show if a booking is pending-->
-                                            <a class="h30 rc15 bg-clr26 clr2 cur-ptr pdlr20 ac rltv"
-                                               data-tooltip="Accept" href="/bookings/accept/<%= booking._id %>">
-                                                <i class="fa fa-check"></i>
-                                            </a>
-                                            <a class="h30 rc15 bg-clr9 clr2 cur-ptr pdlr20 ac rltv"
-                                               data-tooltip="Decline" href="/bookings/reject/<%= booking._id %>">
-                                                <i class="fa fa-times"></i>
-                                                </a>
-                                            <% } %>
 
-                                            <% } %>
+                                        </td>
+
+                                        <td class="va-m pd5">
+                                            <a class="h30 cur-ptr pdlr20 ac rltv"
+                                               data-tooltip="View operator schedule" href="/bookings/delete/<%= booking._id %>">
+                                                View schedule
+                                            </a>
                                         </td>
                                         <td class="va-m pd5">
-                                            <a class="h30 rc15 bg-clr9 clr2 cur-ptr pdlr20 ac rltv"
-                                               data-tooltip="Delete message" href="/bookings/delete/<%= booking._id %>">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
+                                        <a class="h30 rc15 bg-clr9 clr2 cur-ptr pdlr20 ac rltv"
+                                           data-tooltip="Delete message" href="/bookings/delete/<%= booking._id %>">
+                                            <i class="fa fa-times"></i>
+                                        </a>
                                         </td>
 
                                     </tr>
-                                    <% }) %>
                                     <% } %>
+                                    <%})%>
+                                    <%}%>
 
                                     </tbody>
                                     <tfoot>
